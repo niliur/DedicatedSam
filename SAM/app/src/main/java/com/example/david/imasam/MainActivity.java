@@ -3,11 +3,9 @@ package com.example.david.imasam;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         final int REQUEST_ENABLE_BT = 1;
-        Intent blueToothChoose = new Intent(this, BluetoothChooser.class);
+        final Intent blueToothChoose = new Intent(this, BluetoothChooser.class);
+        Button button = (Button) findViewById(R.id.mainButton);
 
         if (mBluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "Device does not support bluetooth", Toast.LENGTH_SHORT).show();
@@ -29,10 +28,14 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!mBluetoothAdapter.isEnabled()) {
             Toast.makeText(getApplicationContext(), "Enable bluetooth before continuing", Toast.LENGTH_SHORT).show();
-        } else {
-            startActivity(blueToothChoose);
         }
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(blueToothChoose);
+            }
+        });
 
     }
 }
