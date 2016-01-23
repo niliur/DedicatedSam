@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/MainBackground">
+
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:id="@+id/mainButton"
+        android:background="@android:color/transparent"
+        android:layout_marginRight="86dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="72dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
+
+
