@@ -41,7 +41,7 @@ public class BluetoothChooser extends AppCompatActivity {
         final Intent controller = new Intent(this, ControllerActivity.class);
         setContentView(R.layout.activity_bluetooth_chooser);
         isListopen = true;
-        btArray = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
+        btArray = new ArrayAdapter<String>(this, R.layout.custom_list_item);
         devicesfound = (ListView)findViewById(R.id.devicesfound);
         devicesfound.setAdapter(btArray);
 
