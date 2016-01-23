@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal"
-    android:background="@drawable/ControllerBackground">
+    android:background="@drawable/controllerbackground">
 
     <com.example.david.imasam.VerticalSeekBar
         android:id="@+id/VerticalSeekBarLeft"

@@ -8,15 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import static com.example.david.imasam.R.id.mainButton;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         final int REQUEST_ENABLE_BT = 1;
         final Intent blueToothChoose = new Intent(this, BluetoothChooser.class);
-        Button button = (Button) findViewById(R.id.mainButton);
+        Button button = (Button) findViewById(mainButton);
 
         if (mBluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "Device does not support bluetooth", Toast.LENGTH_SHORT).show();
@@ -31,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         button.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
                 startActivity(blueToothChoose);
             }

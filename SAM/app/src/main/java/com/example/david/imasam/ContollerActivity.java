@@ -24,7 +24,7 @@ public class ContollerActivity extends AppCompatActivity {
                         byte[] toByte = new byte[1];
                         toByte[0] = (byte) progress_value;
 
-                        SelectBluetoothActivity.write(toByte);
+                        //SelectBluetoothActivity.write(toByte);
                     }
 
                     @Override
@@ -49,7 +49,7 @@ public class ContollerActivity extends AppCompatActivity {
                         byte[] toByte = new byte[1];
                         toByte[0] = (byte) progress_value;
 
-                        SelectBluetoothActivity.write(toByte);
+                        //SelectBluetoothActivity.write(toByte);
 
                     }
 
