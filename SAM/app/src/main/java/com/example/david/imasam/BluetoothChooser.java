@@ -10,27 +10,22 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import com.example.david.imasam.ControllerActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Set;
 import java.util.UUID;
 
 public class BluetoothChooser extends AppCompatActivity {
 
-    private boolean isListopen = false;
+    static private boolean isListopen;
     private int REQUEST_ENABLE_BT = 1;
     private boolean found = false;
     ArrayAdapter<String> btArray;
@@ -38,13 +33,14 @@ public class BluetoothChooser extends AppCompatActivity {
     private ConnectThread ctThread;
     private ConnectedThread cTThread;
     public final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    Intent controller = new Intent(this,ControllerActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final Intent controller = new Intent(this, ControllerActivity.class);
         setContentView(R.layout.activity_bluetooth_chooser);
         isListopen = true;
-
         btArray = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1);
         devicesfound = (ListView)findViewById(R.id.devicesfound);
         devicesfound.setAdapter(btArray);
@@ -53,6 +49,7 @@ public class BluetoothChooser extends AppCompatActivity {
 
         new Thread(new Runnable() {
             public void run() {
+
                 while (isListopen) {
                     if (mBluetoothAdapter.isDiscovering()){
                         Log.d("myapp", "working");
@@ -60,6 +57,7 @@ public class BluetoothChooser extends AppCompatActivity {
                         mBluetoothAdapter.startDiscovery();
                         Log.d("myapp", "starting");
                         clear(btArray);
+                        setText(btArray,"debugmode\n");
                     }
 
                     try {
@@ -70,8 +68,6 @@ public class BluetoothChooser extends AppCompatActivity {
                 }
             }
         }).start();
-
-
 
         devicesfound.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
@@ -84,6 +80,10 @@ public class BluetoothChooser extends AppCompatActivity {
                 }
 
                 private void valueChecker(String value) {
+                    if (value == "debugmode\n"){
+                            startActivity(controller);
+                            finish();
+                    }
                     value = value.substring(value.length() - 17);
                     BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(value);
                     ctThread = new ConnectThread(device);
@@ -93,7 +93,11 @@ public class BluetoothChooser extends AppCompatActivity {
                 }
             }
         );
+
+
+
     }
+
 
 
     private final BroadcastReceiver ActionFoundReceiver = new BroadcastReceiver() {
@@ -136,6 +140,7 @@ public class BluetoothChooser extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onDestroy();
         unregisterReceiver(ActionFoundReceiver);
+        isListopen = false;
     }
 
 
@@ -261,6 +266,7 @@ public class BluetoothChooser extends AppCompatActivity {
             } catch (IOException e) {}
         }
     }
+
 }
 
 

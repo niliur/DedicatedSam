@@ -28,11 +28,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ContollerActivity"
+            android:name=".ControllerActivity"
             android:label="ControllerActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape">
-    </activity>
+        </activity>
     </application>
 
 </manifest>
