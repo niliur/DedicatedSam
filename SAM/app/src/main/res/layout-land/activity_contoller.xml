@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="1000dp"
-    android:layout_height="1000dp"
+    android:layout_width="640dp"
+    android:layout_height="350dp"
     android:orientation="horizontal"
     android:background="@drawable/controllerbackground">
 
     <com.example.david.imasam.VerticalSeekBar
         android:id="@+id/VerticalSeekBarLeft"
         android:layout_width="35dp"
-        android:layout_height="fill_parent"
+        android:layout_height="340dp"
         android:progressDrawable="@android:color/holo_purple"
         android:thumb="@android:color/transparent"
         android:max="90"
@@ -22,7 +22,7 @@
     <com.example.david.imasam.VerticalSeekBar
         android:id="@+id/VerticalSeekBarRightt"
         android:layout_width="35dp"
-        android:layout_height="fill_parent"
+        android:layout_height="340dp"
         android:progressDrawable="@android:color/holo_purple"
         android:thumb="@null"
         android:max="90"
