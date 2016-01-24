@@ -7,29 +7,29 @@
 
     <com.example.david.imasam.VerticalSeekBar
         android:id="@+id/VerticalSeekBarLeft"
-        android:layout_width="wrap_content"
+        android:layout_width="35dp"
         android:layout_height="fill_parent"
-        android:progressDrawable="@android:color/transparent"
+        android:progressDrawable="@android:color/holo_purple"
         android:thumb="@android:color/transparent"
         android:max="90"
         android:progress="45"
-        android:layout_marginLeft="206dp"
-        android:layout_marginStart="206dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginStart="226dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <com.example.david.imasam.VerticalSeekBar
         android:id="@+id/VerticalSeekBarRightt"
-        android:layout_width="wrap_content"
+        android:layout_width="35dp"
         android:layout_height="fill_parent"
-        android:progressDrawable="@null"
+        android:progressDrawable="@android:color/holo_purple"
         android:thumb="@null"
         android:max="90"
         android:progress="45"
         android:indeterminate="false"
-        android:layout_marginLeft="92dp"
-        android:layout_marginStart="92dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginStart="112dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/VerticalSeekBarLeft"
         android:layout_toEndOf="@+id/VerticalSeekBarLeft" />

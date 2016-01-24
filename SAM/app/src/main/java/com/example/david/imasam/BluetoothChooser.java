@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.example.david.imasam.ControllerActivity;
 
 import java.io.IOException;
@@ -30,8 +32,8 @@ public class BluetoothChooser extends AppCompatActivity {
     private boolean found = false;
     ArrayAdapter<String> btArray;
     private ListView devicesfound;
-    private ConnectThread ctThread;
-    private ConnectedThread cTThread;
+    private static ConnectThread ctThread;
+    private static ConnectedThread cTThread;
     public final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     Intent controller = new Intent(this,ControllerActivity.class);
 
@@ -81,8 +83,10 @@ public class BluetoothChooser extends AppCompatActivity {
 
                 private void valueChecker(String value) {
                     if (value == "debugmode\n"){
-                            startActivity(controller);
-                            finish();
+                        ctThread = new ConnectThread(mBluetoothAdapter.getRemoteDevice("00:43:A8:23:10:F0"));
+                        startActivity(controller);
+                        finish();
+
                     }
                     value = value.substring(value.length() - 17);
                     BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(value);
@@ -90,6 +94,15 @@ public class BluetoothChooser extends AppCompatActivity {
                     ctThread.run();
                     cTThread = new ConnectedThread(ctThread.mmSocket);
                     cTThread.start();
+                    if (ctThread.mmSocket.isConnected()) {
+                        Toast.makeText(getApplicationContext(), "matched success", Toast.LENGTH_SHORT).show();
+                        startActivity(controller);
+                        finish();
+                    }
+
+                    else {
+                        Toast.makeText(getApplicationContext(), "Unable to create a connection \n Try again", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         );
@@ -136,12 +149,13 @@ public class BluetoothChooser extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onPause() {
         // TODO Auto-generated method stub
-        super.onDestroy();
+        super.onPause();
         unregisterReceiver(ActionFoundReceiver);
         isListopen = false;
     }
+
 
 
     private class ConnectThread extends Thread {
@@ -267,6 +281,12 @@ public class BluetoothChooser extends AppCompatActivity {
         }
     }
 
+    public static void write(byte[] bytes){
+        cTThread.write(bytes);
+    }
+    public static boolean valid(){
+        return ctThread.mmSocket.isConnected();
+    }
 }
 
 
