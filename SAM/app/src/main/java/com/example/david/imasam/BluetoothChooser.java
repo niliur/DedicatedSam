@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.david.imasam.ControllerActivity;
@@ -32,6 +33,7 @@ public class BluetoothChooser extends AppCompatActivity {
     private boolean found = false;
     ArrayAdapter<String> btArray;
     private ListView devicesfound;
+    private TextView chooser;
     private static ConnectThread ctThread;
     private static ConnectedThread cTThread;
     public final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -46,20 +48,35 @@ public class BluetoothChooser extends AppCompatActivity {
         btArray = new ArrayAdapter<String>(this, R.layout.custom_list_item);
         devicesfound = (ListView)findViewById(R.id.devicesfound);
         devicesfound.setAdapter(btArray);
+        chooser = (TextView)findViewById(R.id.choosertitle);
+
 
         registerReceiver(ActionFoundReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
 
         new Thread(new Runnable() {
             public void run() {
+                int numdots = 0;
+                String output;
 
                 while (isListopen) {
                     if (mBluetoothAdapter.isDiscovering()){
-                        Log.d("myapp", "working");
+                        output = "Searching";
+                        for (int i = 0; i < numdots; i++ ){
+                            output +=".";
+                        }
+                        if(numdots < 4){
+                            numdots++;
+                        }else{
+                            numdots = 0;
+                        }
+                        output += "\n";
+                        setText(chooser,output);
                     }else{
                         mBluetoothAdapter.startDiscovery();
-                        Log.d("myapp", "starting");
+                        output = "Searching complete, Restarting Search...\n";
                         clear(btArray);
                         setText(btArray,"debugmode\n");
+                        setText(chooser,output);
                     }
 
                     try {
@@ -134,6 +151,15 @@ public class BluetoothChooser extends AppCompatActivity {
             public void run() {
                 array.add(text);
                 array.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void setText(final TextView textview, final String text) {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                textview.setText(text);
             }
         });
     }
