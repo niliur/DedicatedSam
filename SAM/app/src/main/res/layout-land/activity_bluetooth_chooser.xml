@@ -15,16 +15,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/grad"
+            android:backgroundTint="@color/purple"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
             android:id="@+id/choosertitle"
-            android:layout_weight="5" />
+            android:textStyle="bold"
+            android:layout_weight="1.05" />
 
         <ListView
             android:id="@+id/devicesfound"
             android:layout_width="match_parent"
             android:layout_height="191dp"
-            android:layout_weight="4.67" />
+            android:layout_weight="4.67"
+            android:background="@drawable/harry"/>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

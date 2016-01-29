@@ -1,4 +1,4 @@
-package com.example.david.imasam;
+package util;
 
 /**
  * "Borrowed" by Edward on 11/20/2015.
