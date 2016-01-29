@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:background="@drawable/controllerbackground">
 
-    <com.example.david.imasam.VerticalSeekBar
+        <com.example.david.imasam.VerticalSeekBar
         android:id="@+id/VerticalSeekBarLeft"
         android:layout_width="35dp"
         android:layout_height="340dp"
