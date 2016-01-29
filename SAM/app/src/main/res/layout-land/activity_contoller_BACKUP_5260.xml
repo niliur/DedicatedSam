@@ -5,35 +5,38 @@
     android:orientation="horizontal"
     android:background="@drawable/controllerbackground">
 
+<<<<<<< HEAD
+        <com.example.david.imasam.VerticalSeekBar
+=======
     <util.VerticalSeekBar
+>>>>>>> aafdf3713c208c0976ca58ad6d95ea40666fe34b
         android:id="@+id/VerticalSeekBarLeft"
         android:layout_width="35dp"
         android:layout_height="340dp"
         android:progressDrawable="@android:color/transparent"
-        android:thumb="@drawable/slider_thumb"
+        android:thumb="@android:color/transparent"
         android:max="90"
         android:progress="45"
-        android:layout_marginLeft="177dp"
-        android:layout_marginStart="177dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginStart="226dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:indeterminate="false" />
+        android:layout_alignParentStart="true" />
 
     <util.VerticalSeekBar
         android:id="@+id/VerticalSeekBarRight"
         android:layout_width="35dp"
         android:layout_height="340dp"
         android:progressDrawable="@android:color/transparent"
-        android:thumb="@drawable/slider_thumb"
+        android:thumb="@null"
         android:max="90"
         android:progress="45"
         android:indeterminate="false"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="162dp"
-        android:layout_marginEnd="162dp" />
+        android:layout_marginLeft="112dp"
+        android:layout_marginStart="112dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/VerticalSeekBarLeft"
+        android:layout_toEndOf="@+id/VerticalSeekBarLeft" />
 
     <util.LightView
         xmlns:android="http://schemas.android.com/apk/res/android"
