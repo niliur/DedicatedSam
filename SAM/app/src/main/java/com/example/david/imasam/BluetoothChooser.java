@@ -33,11 +33,14 @@ public class BluetoothChooser extends AppCompatActivity {
     private boolean found = false;
     ArrayAdapter<String> btArray;
     private ListView devicesfound;
-    private TextView chooser;
+
     private static ConnectThread ctThread;
     private static ConnectedThread cTThread;
     public final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     Intent controller = new Intent(this,ControllerActivity.class);
+
+    private TextView chooser;
+    private boolean tapped = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +54,15 @@ public class BluetoothChooser extends AppCompatActivity {
         chooser = (TextView)findViewById(R.id.choosertitle);
 
 
+
         registerReceiver(ActionFoundReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
 
         new Thread(new Runnable() {
             public void run() {
                 int numdots = 0;
                 String output;
-
+                mBluetoothAdapter.startDiscovery();
+                setText(btArray, "debugmode\n");
                 while (isListopen) {
                     if (mBluetoothAdapter.isDiscovering()){
                         output = "Searching";
@@ -69,13 +74,17 @@ public class BluetoothChooser extends AppCompatActivity {
                         }else{
                             numdots = 0;
                         }
-                        output += "\n";
                         setText(chooser,output);
                     }else{
-                        mBluetoothAdapter.startDiscovery();
-                        output = "Searching complete, Restarting Search...\n";
-                        clear(btArray);
-                        setText(btArray,"debugmode\n");
+                        if (tapped == true) {
+                            output = "Restarting Search...";
+                            mBluetoothAdapter.startDiscovery();
+                            clear(btArray);
+                            setText(btArray, "debugmode");
+                            tapped = false;
+                        }else {
+                            output = "Searching complete, tap to restart search...";
+                        }
                         setText(chooser,output);
                     }
 
@@ -87,6 +96,14 @@ public class BluetoothChooser extends AppCompatActivity {
                 }
             }
         }).start();
+
+        chooser.setOnClickListener(new TextView.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                tapped = true;
+            }
+
+        });
 
         devicesfound.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
