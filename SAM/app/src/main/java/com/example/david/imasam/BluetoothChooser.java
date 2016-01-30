@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -53,8 +54,8 @@ public class BluetoothChooser extends AppCompatActivity {
         devicesfound.setAdapter(btArray);
         chooser = (TextView)findViewById(R.id.choosertitle);
 
-
-
+        //int transparent = ContextCompat.getColor(this, android.R.color.transparent);
+        //devicesfound.setBackgroundColor(transparent);
         registerReceiver(ActionFoundReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
 
         new Thread(new Runnable() {

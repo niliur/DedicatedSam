@@ -10,19 +10,18 @@
         android:layout_width="145dp"
         android:layout_height="70dp"
         android:id="@+id/startButton"
-        android:background="@null"
-        android:layout_marginRight="163dp"
+        android:background="@drawable/startbutton"
+        android:layout_marginRight="161dp"
         android:layout_marginEnd="161dp"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="157dp" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="145dp"
         android:layout_height="70dp"
         android:id="@+id/aboutButton"
-        android:background="#152065"
+        android:background="@drawable/aboutbutton"
         android:layout_below="@+id/startButton"
         android:layout_alignLeft="@+id/startButton"
         android:layout_alignStart="@+id/startButton"

@@ -2,24 +2,19 @@ package com.example.david.imasam;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 import util.LightView;
 import util.SeekbarAuto;
 import util.VerticalSeekBar;
 
 public class ControllerActivity extends AppCompatActivity {
-    private VerticalSeekBar seekbar_left;
-    private VerticalSeekBar seekbar_right;
     private LightView lightleft;
     private LightView lightright;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contoller);
+        setContentView(R.layout.activity_controller);
 
         final SeekbarAuto seekbarleft = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarLeft));
         final SeekbarAuto seekbarright = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarRight));

@@ -3,12 +3,12 @@
     <item>
         <shape>
             <size
-                android:height="75dp"
-                android:width="75dp" />
+                android:height="10dp"
+                android:width="10dp" />
 
             <solid android:color="@android:color/transparent" />
         </shape>
     </item>
-    <item android:drawable="@drawable/sliderThumb"/>
+    <item android:drawable="@drawable/sliderthumb"/>
 
 </layer-list>
