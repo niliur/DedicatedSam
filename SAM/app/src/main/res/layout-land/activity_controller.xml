@@ -7,32 +7,36 @@
 
     <util.VerticalSeekBar
         android:id="@+id/VerticalSeekBarLeft"
-        android:layout_width="50dp"
-        android:layout_height="340dp"
-        android:progressDrawable="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="330dp"
+        android:progressDrawable="@drawable/seekbarbackground"
         android:thumb="@drawable/sliderthumb"
         android:max="90"
         android:progress="45"
         android:indeterminate="false"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="175dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="18dp"
         android:layout_alignLeft="@+id/VerticalSeekBarRight"
-        android:layout_toRightOf="@+id/VerticalSeekBarRight" />
+        android:layout_toRightOf="@+id/VerticalSeekBarRight"
+        android:layout_marginTop="12dp" />
 
     <util.VerticalSeekBar
         android:id="@+id/VerticalSeekBarRight"
-        android:layout_width="50dp"
-        android:layout_height="340dp"
-        android:progressDrawable="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="330dp"
+        android:progressDrawable="@drawable/seekbarbackground"
         android:thumb="@drawable/sliderthumb"
         android:max="90"
         android:progress="45"
         android:indeterminate="false"
-        android:layout_alignBottom="@+id/VerticalSeekBarLeft"
+        android:layout_marginLeft="41dp"
+        android:layout_marginStart="41dp"
+        android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/headlightRight"
         android:layout_toEndOf="@+id/headlightRight"
-        android:layout_marginLeft="36dp" />
+        android:layout_marginBottom="18dp"
+        android:layout_marginTop="12dp" />
 
     <util.LightView
         xmlns:android="http://schemas.android.com/apk/res/android"
