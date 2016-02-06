@@ -1,15 +1,17 @@
 package com.example.david.imasam;
 
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import util.LightView;
+import util.LightViewLeft;
+import util.LightViewRight;
 import util.SeekbarAuto;
 import util.VerticalSeekBar;
 
 public class ControllerActivity extends AppCompatActivity {
-    private LightView lightleft;
-    private LightView lightright;
+    private LightViewLeft lightleft;
+    private LightViewRight lightright;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +20,8 @@ public class ControllerActivity extends AppCompatActivity {
 
         final SeekbarAuto seekbarleft = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarLeft));
         final SeekbarAuto seekbarright = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarRight));
-        lightleft = (LightView) findViewById(R.id.headlightleft);
-        lightright = (LightView) findViewById(R.id.headlightRight);
+        lightleft = (LightViewLeft) findViewById(R.id.lightleft);
+        lightright = (LightViewRight) findViewById(R.id.LightRight);
 
         new Thread(new Runnable() {
             @Override
@@ -27,8 +29,10 @@ public class ControllerActivity extends AppCompatActivity {
                 while (true) {
                     int leftvalue = seekbarleft.getValue();
                     int rightvalue = seekbarright.getValue();
-                    lightleft.colorupdater(leftvalue);
-                    lightright.colorupdater(rightvalue);
+                    //lightleft.colorupdater(leftvalue);
+                    updatelights(lightleft.getShape(),lightleft.colorupdater(leftvalue));
+                    //lightright.colorupdater(rightvalue);
+                    updatelights(lightright.getShape(),lightright.colorupdater(rightvalue));
                     inval(lightleft);
                     inval(lightright);
                     byte[] sent = new byte[2];
@@ -115,12 +119,31 @@ public class ControllerActivity extends AppCompatActivity {
                 }
         );
 */
-    private void inval(final LightView v) {
+    private void inval(final LightViewLeft v) {
        this.runOnUiThread(new Runnable() {
            @Override
            public void run() {
                v.invalidate();
            }
        });
+    }
+
+    private void inval(final LightViewRight v) {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                v.invalidate();
+            }
+        });
+    }
+
+
+    private void updatelights(final GradientDrawable v, final int color) {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                v.setColor(color);
+            }
+        });
     }
 }

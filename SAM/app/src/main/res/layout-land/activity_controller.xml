@@ -1,67 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="640dp"
     android:layout_height="350dp"
+    android:background="@drawable/controllerbackground"
     android:orientation="horizontal"
-    android:background="@drawable/controllerbackground">
+    android:weightSum="1">
 
     <util.VerticalSeekBar
         android:id="@+id/VerticalSeekBarLeft"
         android:layout_width="wrap_content"
         android:layout_height="330dp"
-        android:progressDrawable="@drawable/seekbarbackground"
-        android:thumb="@drawable/sliderthumb"
+        android:layout_alignLeft="@+id/VerticalSeekBarRight"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="18dp"
+        android:layout_marginLeft="175dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@+id/VerticalSeekBarRight"
+        android:indeterminate="false"
         android:max="90"
         android:progress="45"
-        android:indeterminate="false"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="175dp"
-        android:layout_marginBottom="18dp"
-        android:layout_alignLeft="@+id/VerticalSeekBarRight"
-        android:layout_toRightOf="@+id/VerticalSeekBarRight"
-        android:layout_marginTop="12dp" />
+        android:progressDrawable="@drawable/seekbarbackground"
+        android:thumb="@drawable/sliderthumb" />
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/placeholder"
+        android:layout_width="220dp"
+        android:layout_height="100dp">
+
+        <util.LightViewLeft
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/lightleft"
+            android:layout_width="70dp"
+            android:layout_height="87dp"
+            android:background="@drawable/cone_light_left"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="40dp" />
+
+        <util.LightViewRight
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/LightRight"
+            android:layout_width="70dp"
+            android:layout_height="87dp"
+            android:background="@drawable/cone_light_right"
+            android:layout_toRightOf="@id/lightleft" />
+
+        <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/lighthide"
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+        </ImageView>
+
+    </RelativeLayout>
+
 
     <util.VerticalSeekBar
         android:id="@+id/VerticalSeekBarRight"
         android:layout_width="wrap_content"
         android:layout_height="330dp"
-        android:progressDrawable="@drawable/seekbarbackground"
-        android:thumb="@drawable/sliderthumb"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/placeholder"
+        android:layout_toRightOf="@+id/placeholder"
+        android:indeterminate="false"
         android:max="90"
         android:progress="45"
-        android:indeterminate="false"
-        android:layout_marginLeft="41dp"
-        android:layout_marginStart="41dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/headlightRight"
-        android:layout_toEndOf="@+id/headlightRight"
-        android:layout_marginBottom="18dp"
+        android:progressDrawable="@drawable/seekbarbackground"
+        android:thumb="@drawable/sliderthumb"
         android:layout_marginTop="12dp" />
 
-    <util.LightView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/headlightleft"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignTop="@+id/headlightRight"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="270dp" />
 
-    <util.LightView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/headlightRight"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="54dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/headlightleft"
-        android:layout_toEndOf="@+id/headlightleft"
-        android:layout_marginLeft="27dp" />
-
-
-
-</RelativeLayout>
+</LinearLayout>
 
 
