@@ -28,7 +28,8 @@ private boolean btchoosen = false;
         final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         final int REQUEST_ENABLE_BT = 1;
         final Intent blueToothChoose = new Intent(this, BluetoothChooser.class);
-        final  Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
+        final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
+        final Intent aboutPage = new Intent(this, AboutPage.class);
 
         Button buttonStart = (Button) findViewById(startButton);
         Button buttonAbout = (Button) findViewById(aboutButton);
@@ -55,8 +56,7 @@ private boolean btchoosen = false;
 
         buttonAbout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(browserIntent);
-                finish();
+                startActivity(aboutPage);
             }
         });
     }

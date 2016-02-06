@@ -63,7 +63,7 @@ public class BluetoothChooser extends AppCompatActivity {
                 int numdots = 0;
                 String output;
                 mBluetoothAdapter.startDiscovery();
-                setText(btArray, "debugmode\n");
+                setText(btArray, "debugmode");
                 while (isListopen) {
                     if (mBluetoothAdapter.isDiscovering()){
                         output = "Searching";
@@ -111,14 +111,14 @@ public class BluetoothChooser extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String value = (String)parent.getItemAtPosition(position);
-                    Log.d("myapp", value);
                     valueChecker(value);
 
                 }
 
                 private void valueChecker(String value) {
-                    if (value == "debugmode\n"){
+                    if (value == "debugmode"){
                         ctThread = new ConnectThread(mBluetoothAdapter.getRemoteDevice("00:43:A8:23:10:F0"));
+
                         startActivity(controller);
                         finish();
 

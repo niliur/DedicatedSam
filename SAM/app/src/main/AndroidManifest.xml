@@ -33,6 +33,12 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape">
         </activity>
+        <activity
+            android:name=".AboutPage"
+            android:label="aboutpage"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="landscape">
+        </activity>
     </application>
 
 </manifest>
