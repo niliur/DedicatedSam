@@ -3,10 +3,10 @@
     <item>
         <shape>
             <size
-                android:height="10dp"
-                android:width="10dp" />
+                android:height="20dp"
+                android:width="20dp" />
 
-            <solid android:color="@android:color/transparent" />
+            <solid android:color="@android:color/black" />
         </shape>
     </item>
     <item android:drawable="@drawable/sliderthumb"/>
