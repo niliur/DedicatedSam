@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="tapped">
+        <attr name="state_thumb_tapped" format="boolean"/>
+    </declare-styleable>
+</resources>

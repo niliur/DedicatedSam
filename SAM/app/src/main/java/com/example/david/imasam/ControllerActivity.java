@@ -12,6 +12,7 @@ import util.VerticalSeekBar;
 public class ControllerActivity extends AppCompatActivity {
     private LightViewLeft lightleft;
     private LightViewRight lightright;
+    private static final int[] STATE_THUMB_TAPPED = {R.attr.state_thumb_tapped};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

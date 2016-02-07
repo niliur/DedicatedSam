@@ -8,19 +8,16 @@
 
     <util.VerticalSeekBar
         android:id="@+id/VerticalSeekBarLeft"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="330dp"
-        android:layout_alignLeft="@+id/VerticalSeekBarRight"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="18dp"
-        android:layout_marginLeft="175dp"
+        android:layout_marginLeft="140dp"
         android:layout_marginTop="12dp"
-        android:layout_toRightOf="@+id/VerticalSeekBarRight"
-        android:indeterminate="false"
         android:max="90"
         android:progress="45"
-        android:progressDrawable="@drawable/seekbarbackground"
-        android:thumb="@drawable/sliderthumb" />
+        android:progressDrawable="@drawable/seekbarbackxml"
+        android:thumb="@drawable/thumbselector"
+        android:minHeight="1000dip"
+        android:maxHeight="1000dip"/>
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -62,17 +59,18 @@
 
     <util.VerticalSeekBar
         android:id="@+id/VerticalSeekBarRight"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="330dp"
-        android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/placeholder"
         android:layout_toRightOf="@+id/placeholder"
         android:indeterminate="false"
         android:max="90"
         android:progress="45"
-        android:progressDrawable="@drawable/seekbarbackground"
-        android:thumb="@drawable/sliderthumb"
-        android:layout_marginTop="12dp" />
+        android:progressDrawable="@drawable/seekbarbackxml"
+        android:thumb="@drawable/thumb_image"
+        android:layout_marginTop="12dp"
+        android:minHeight="1000dip"
+        android:maxHeight="1000dip"/>
 
 
 </LinearLayout>
