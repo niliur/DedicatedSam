@@ -36,19 +36,20 @@ public class ControllerActivity extends AppCompatActivity {
                     updatelights(lightright.getShape(),lightright.colorupdater(rightvalue));
                     inval(lightleft);
                     inval(lightright);
-                    byte[] sent = new byte[2];
+                    byte[] sent = new byte[3];
                     boolean newsent = false;
+                    sent[0] = (byte) 180;
                     if (leftvalue == -1){
-                        sent[0] = (byte)90;
+                        sent[1] = (byte)90;
                     }else{
-                        sent[0] = (byte)(leftvalue*2);
+                        sent[1] = (byte)(leftvalue*2);
                         newsent = true;
                     }
 
                     if (rightvalue == -1){
-                        sent[1] = (byte)90;
+                        sent[2] = (byte)90;
                     }else{
-                        sent[1] = (byte)(rightvalue*2);
+                        sent[2] = (byte)(rightvalue*2);
                         newsent = true;
                     }
 
