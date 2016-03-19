@@ -57,11 +57,12 @@ void setup() {
  
  
 void loop() {
-  // put your main code here, to run repeatedly:
+  //Checks to see if there is incoming data
   if (bluetoothInput.available() > 0) {
     bluetoothInput.readBytes(state, 1);
+    //Checks to see where data is coming from and calls the corresponding code
     if (state[0] == 180){
-    bluetoothInput.readBytes(state, 2);
+      bluetoothInput.readBytes(state, 2);
       fromPhone(state[0], state[1]);
     }
     else{
@@ -70,7 +71,7 @@ void loop() {
        }
   }
   blinkFunc();
-  stopPhone();  
+  noMoreIncoming();  
 
     
 }
@@ -129,7 +130,6 @@ void fromComputer (int incomingByte) {
       rightServo.write(0);
       leftServo.write(180);
       blinkState = 1;
-      //blinkPair(ledFrontLeft, ledFrontRight);
     }
 
   else if(incomingByte == 's') {
@@ -137,20 +137,17 @@ void fromComputer (int incomingByte) {
       rightServo.write(180);
       leftServo.write(0);
       blinkState = 2;
-      //blinkPair(ledBackLeft, ledBackRight);
   }
   
   else if(incomingByte == 'a') {
     // if 'l', then go left
       rightServo.write(0);
       leftServo.write(0);
-     // blinkPair(ledFrontLeft, ledBackLeft);    
 }
   else if(incomingByte == 'd') {
     // if 'r', then go right
       rightServo.write(180);
       leftServo.write(180);
-     // blinkPair(ledFrontRight, ledBackRight);
   }
   else if(incomingByte == 'x') {
     // if 'x', then stop
@@ -160,35 +157,30 @@ void fromComputer (int incomingByte) {
    
    ////SLOOOOOOOOW
    else if(incomingByte == 'i'){
-    // if 'f', then go forward
+    // if 'i', then go forward
       rightServo.write(45);
       leftServo.write(135);
-   //   blinkPair(ledFrontLeft, ledFrontRight);
     }
 
   else if(incomingByte == 'k') {
-    // if 'b', then go backward
- 
+    // if 'k', then go backward
       rightServo.write(135);
       leftServo.write(45);
-    //  blinkPair(ledBackLeft, ledBackRight);
   }
   
   else if(incomingByte == 'j') {
-    // if 'l', then go left
+    // if 'j', then go left
       rightServo.write(80);
       leftServo.write(80);
-  //    blinkPair(ledFrontLeft, ledBackLeft);    
 }
   else if(incomingByte == 'l') {
-    // if 'r', then go right
+    // if 'l', then go right
       rightServo.write(100);
       leftServo.write(100);
-//      blinkPair(ledFrontRight, ledBackRight);
-  }
+    }
 
     else if(incomingByte == ' ') {
-    // if 'r', then go right
+    // if '/space/', then stop
       rightServo.write(90);
       leftServo.write(90);
       blinkState = 0;
@@ -197,38 +189,26 @@ void fromComputer (int incomingByte) {
 }
 
 void fromPhone (int leftMotor, int rightMotor) {
+  //Sets the speed of the motor to the position of the sliders in the app
   leftServo.write(leftMotor);
   rightServo.write(180- rightMotor);
-  if (leftMotor > 125){
-    //digitalWrite(ledFrontLeft, HIGH);
-    //digitalWrite(ledBackLeft, LOW);
-  } 
-  else if(leftMotor < 55){
-   // digitalWrite(ledFrontLeft, LOW);
-   // digitalWrite(ledBackLeft, HIGH);
-  }
-  else{
-   // digitalWrite(ledFrontLeft, LOW);
-   // digitalWrite(ledBackLeft, LOW);     
-  }
-  if (rightMotor > 125){
-   // digitalWrite(ledFrontRight, HIGH);
-   // digitalWrite(ledBackRight, LOW);
-  }
-  else if(rightMotor < 55){
-   // digitalWrite(ledFrontRight, LOW);
-   // digitalWrite(ledBackRight, HIGH);
-  }
-  else{
-   // digitalWrite(ledFrontRight, LOW);
-   // digitalWrite(ledBackRight, LOW);
-      
-  }
+  
+  //All Leds On
+  digitalWrite(ledEyeRight, HIGH);
+  digitalWrite(ledEyeLeft, HIGH);
+  digitalWrite(ledFrontRight, HIGH);
+  digitalWrite(ledFrontLeft, HIGH);
+  digitalWrite(ledBackRight, HIGH);
+  digitalWrite(ledBackLeft, HIGH);
+  
+  //These are the variables for the noMoreIncoming function
    ptime = millis();
    reset = 0;
    return;
 }
-void stopPhone(){
+
+
+void noMoreIncoming(){
   currentTime = millis(); 
   if (reset == 0 && currentTime - ptime >= 150){
     leftServo.write(90);
@@ -236,24 +216,4 @@ void stopPhone(){
     reset = 1;
   }
 }
-
-/*
-int blinkOn (int incomingByte) {
-  digitalWrite(ledFrontLeft, HIGH);
-  digitalWrite(ledBackLeft, HIGH);
-  digitalWrite(ledFrontRight, HIGH);
-  digitalWrite(ledBackRight, HIGH);
-
-    return 1;
-}
-
-int blinkOff (int incomingByte) {
-    digitalWrite(ledFrontLeft, LOW);
-    digitalWrite(ledBackLeft, LOW);
-    digitalWrite(ledFrontRight, LOW);
-    digitalWrite(ledBackRight, LOW);
-
-    return 0;
-}
-*/
 
