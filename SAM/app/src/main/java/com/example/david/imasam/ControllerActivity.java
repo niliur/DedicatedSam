@@ -26,8 +26,8 @@ public class ControllerActivity extends AppCompatActivity {
         final SeekbarAuto seekbarleft = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarLeft));
         final SeekbarAuto seekbarright = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarRight));
         final TextView bluetoothStatus = (TextView) findViewById(R.id.bluetoothStatus);
-        lightleft = (LightViewLeft) findViewById(R.id.lightleft);
-        lightright = (LightViewRight) findViewById(R.id.LightRight);
+        //lightleft = (LightViewLeft) findViewById(R.id.lightleft);
+        //lightright = (LightViewRight) findViewById(R.id.LightRight);
         final Button optionsButton = (Button) findViewById(R.id.options);
         final Button wifiButton = (Button) findViewById(R.id.wifi);
         final Button bluetoothButton = (Button) findViewById(R.id.bluetooth);
@@ -72,11 +72,11 @@ public class ControllerActivity extends AppCompatActivity {
                         int leftvalue = seekbarleft.getValue();
                         int rightvalue = seekbarright.getValue();
                         //lightleft.colorupdater(leftvalue);
-                        updatelights(lightleft.getShape(), lightleft.colorupdater(leftvalue));
+                        //updatelights(lightleft.getShape(), lightleft.colorupdater(leftvalue));
                         //lightright.colorupdater(rightvalue);
-                        updatelights(lightright.getShape(), lightright.colorupdater(rightvalue));
-                        inval(lightleft);
-                        inval(lightright);
+                        //updatelights(lightright.getShape(), lightright.colorupdater(rightvalue));
+                        //inval(lightleft);
+                        //inval(lightright);
                         byte[] sent = new byte[3];
                         boolean newsent = false;
                         sent[0] = (byte) 180;
