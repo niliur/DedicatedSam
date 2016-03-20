@@ -10,9 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
-import util.CircleSlice;
-
-import static com.example.david.imasam.R.id.startButton;
+import static com.example.david.imasam.R.id.samButton;
 import static com.example.david.imasam.R.id.aboutButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +29,7 @@ private boolean btchoosen = false;
         final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
         final Intent aboutPage = new Intent(this, AboutPage.class);
 
-        Button buttonStart = (Button) findViewById(startButton);
+        Button buttonStart = (Button) findViewById(samButton);
         Button buttonAbout = (Button) findViewById(aboutButton);
 
 

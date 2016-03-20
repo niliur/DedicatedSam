@@ -7,25 +7,52 @@
     android:background="@drawable/mainbackground">
 
     <Button
-        android:layout_width="145dp"
-        android:layout_height="70dp"
-        android:id="@+id/startButton"
-        android:background ="@drawable/rounded_selector_start"
-        android:layout_marginRight="161dp"
-        android:layout_marginEnd="161dp"
-        android:layout_centerVertical="true"
+        android:layout_width="114dp"
+        android:layout_height="55dp"
+        android:id="@+id/junoButton"
+        android:background="@drawable/junobutton"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="138dp"
+        android:layout_marginEnd="30dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp" />
     <Button
-        android:layout_width="145dp"
-        android:layout_height="70dp"
+        android:layout_width="114dp"
+        android:layout_height="55dp"
+        android:id="@+id/samButton"
+        android:background="@drawable/sambutton"
+        android:layout_below="@+id/junoButton"
+        android:layout_alignLeft="@+id/trexButton"
+        android:layout_alignStart="@+id/junoButton"
+        android:layout_marginBottom="10dp" />
+    <Button
+        android:layout_width="114dp"
+        android:layout_height="55dp"
+        android:id="@+id/trexButton"
+        android:background="@drawable/trexbutton"
+        android:layout_below="@+id/samButton"
+        android:layout_alignLeft="@+id/junoButton"
+        android:layout_alignStart="@+id/junoButton"
+        android:layout_marginBottom="10dp" />
+    <Button
+        android:layout_width="114dp"
+        android:layout_height="55dp"
+        android:id="@+id/remoteButton"
+        android:background="@drawable/remotebutton"
+        android:layout_below="@+id/trexButton"
+        android:layout_alignLeft="@+id/trexButton"
+        android:layout_alignStart="@+id/junoButton"
+        android:layout_marginBottom="10dp" />
+    <Button
+        android:layout_width="114dp"
+        android:layout_height="55dp"
         android:id="@+id/aboutButton"
-        android:background="@drawable/rounded_selector_about"
-        android:layout_below="@+id/startButton"
-        android:layout_alignLeft="@+id/startButton"
-        android:layout_alignStart="@+id/startButton"
-        android:layout_marginTop="23dp" />
+        android:background="@drawable/aboutbutton"
+        android:layout_below="@+id/remoteButton"
+        android:layout_alignLeft="@+id/remoteButton"
+        android:layout_alignStart="@+id/remoteButton" />
 </RelativeLayout>
 
 
