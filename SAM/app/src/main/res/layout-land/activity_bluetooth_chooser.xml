@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bluetoothbackground"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.example.david.imasam.BluetoothChooser">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,20 +16,22 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/grad"
+            android:background="@drawable/search_grad"
             android:backgroundTint="@color/purple"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
             android:id="@+id/choosertitle"
             android:textStyle="bold"
+            android:textColor="@android:color/black"
             android:layout_weight="1.05" />
 
         <ListView
             android:id="@+id/devicesfound"
             android:layout_width="match_parent"
             android:fadingEdge="none"
+            android:textColor="@android:color/black"
             android:layout_height="191dp"
             android:layout_weight="4.67"/>
     </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

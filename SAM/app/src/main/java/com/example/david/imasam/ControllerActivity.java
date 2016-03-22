@@ -1,5 +1,6 @@
 package com.example.david.imasam;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,7 @@ import util.LightViewRight;
 import util.SeekbarAuto;
 import util.VerticalSeekBar;
 
-public class ControllerActivity extends AppCompatActivity {
+public class ControllerActivity extends Activity {
     private LightViewLeft lightleft;
     private LightViewRight lightright;
     private static final int[] STATE_THUMB_TAPPED = {R.attr.state_thumb_tapped};
@@ -31,12 +32,36 @@ public class ControllerActivity extends AppCompatActivity {
         final Button optionsButton = (Button) findViewById(R.id.options);
         final Button wifiButton = (Button) findViewById(R.id.wifi);
         final Button bluetoothButton = (Button) findViewById(R.id.bluetooth);
+        final View aButton = findViewById(R.id.aButton);
+        final View bButton = findViewById(R.id.bButton);
+        final View cButton = findViewById(R.id.cButton);
         final Intent blueToothChoose = new Intent(this, BluetoothChooser.class);
 
         final Intent WifiActivity = new Intent(this, WifiActivity.class);
 
         wifiButton.setVisibility(View.GONE);
         bluetoothButton.setVisibility(View.GONE);
+
+        aButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BluetoothChooser.write(sent);
+            }
+        });
+
+        bButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BluetoothChooser.write(sent);
+            }
+        });
+
+        cButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BluetoothChooser.write(sent);
+            }
+        });
 
         optionsButton.setOnClickListener(new View.OnClickListener() {
             @Override

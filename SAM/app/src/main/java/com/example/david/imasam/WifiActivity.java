@@ -1,5 +1,6 @@
 package com.example.david.imasam;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import com.sinch.android.rtc.messaging.WritableMessage;
 
 import java.util.List;
 
-public class WifiActivity extends AppCompatActivity {
+public class WifiActivity extends Activity {
 
     private SinchClient sinchClient = null;
 

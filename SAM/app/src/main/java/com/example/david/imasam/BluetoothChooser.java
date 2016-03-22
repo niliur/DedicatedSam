@@ -1,5 +1,6 @@
 package com.example.david.imasam;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -10,9 +11,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,14 +18,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.david.imasam.ControllerActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
-public class BluetoothChooser extends AppCompatActivity {
+public class BluetoothChooser extends Activity {
 
     static private boolean isListopen;
     private int REQUEST_ENABLE_BT = 1;
@@ -38,7 +35,6 @@ public class BluetoothChooser extends AppCompatActivity {
     private static ConnectThread ctThread;
     private static ConnectedThread cTThread;
     public final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    Intent controller = new Intent(this,ControllerActivity.class);
 
     private TextView chooser;
     private boolean tapped = false;
@@ -46,7 +42,7 @@ public class BluetoothChooser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final Intent controller = new Intent(this, ControllerActivity.class);
+        final Intent moduleChooser = new Intent(this, vehicleChooser.class);
         setContentView(R.layout.activity_bluetooth_chooser);
         isListopen = true;
         btArray = new ArrayAdapter<String>(this, R.layout.custom_list_item);
@@ -119,7 +115,7 @@ public class BluetoothChooser extends AppCompatActivity {
                     if (value == "debugmode"){
                         ctThread = new ConnectThread(mBluetoothAdapter.getRemoteDevice("00:43:A8:23:10:F0"));
 
-                        startActivity(controller);
+                        startActivity(moduleChooser);
                         finish();
 
                     }
@@ -131,7 +127,7 @@ public class BluetoothChooser extends AppCompatActivity {
                     cTThread.start();
                     if (ctThread.mmSocket.isConnected()) {
                         Toast.makeText(getApplicationContext(), "matched success", Toast.LENGTH_SHORT).show();
-                        startActivity(controller);
+                        startActivity(moduleChooser);
                         finish();
                     }
 

@@ -1,5 +1,6 @@
 package com.example.david.imasam;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 /**
  * Created by David on 2016-02-06.
  */
-public class AboutPage extends AppCompatActivity {
+public class AboutPage extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,5 +1,6 @@
 package com.example.david.imasam;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,8 +13,10 @@ import android.widget.Toast;
 
 import static com.example.david.imasam.R.id.samButton;
 import static com.example.david.imasam.R.id.aboutButton;
+import static com.example.david.imasam.R.id.start;
+import static com.example.david.imasam.R.id.startButton;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
 private boolean btchoosen = false;
 
@@ -29,8 +32,8 @@ private boolean btchoosen = false;
         final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
         final Intent aboutPage = new Intent(this, AboutPage.class);
 
-        Button buttonStart = (Button) findViewById(samButton);
-        Button buttonAbout = (Button) findViewById(aboutButton);
+        final View buttonStart = findViewById(startButton);
+        final View buttonAbout = findViewById(aboutButton);
 
 
         if (mBluetoothAdapter == null) {
