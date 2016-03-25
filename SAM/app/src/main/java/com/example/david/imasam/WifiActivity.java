@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sinch.android.rtc.PushPair;
 import com.sinch.android.rtc.Sinch;
@@ -35,78 +37,82 @@ public class WifiActivity extends Activity {
 
 
 
-        final Button sendbutton = (Button) findViewById(R.id.sendbutton);
+        final View sendbutton = findViewById(R.id.sendbutton);
         final EditText clientside = (EditText) findViewById(R.id.nameField);
-        final TextView fromWeb = (TextView) findViewById(R.id.recieved);
+        final ImageView connection = (ImageView) findViewById(R.id.connectionStatus);
+        final ImageView wifitext = (ImageView) findViewById(R.id.wifi_text);
+        final ImageView logo = (ImageView) findViewById(R.id.imalogo);
+        final ImageView toplogo = (ImageView) findViewById(R.id.toplogo);
 
-
-
-
-        final MessageClient messageClient;
+        toplogo.setVisibility(View.INVISIBLE);
 
         sendbutton.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
-                                              // Create a WritableMessage
-                                              WritableMessage message = new WritableMessage(
-                                                      "test1", clientside.getText().toString());
+                                              if (clientside.getText().toString().equals(""))
+                                                  Toast.makeText(WifiActivity.this, "Write your unique nam here", Toast.LENGTH_SHORT).show();
+                                              else {
+
+                                                  // Instantiate a SinchClient using the SinchClientBuilder.
+
+                                                  sinchClient = Sinch.getSinchClientBuilder().context(context)
+                                                          .applicationKey("b9fe18db-32c1-4025-aad8-b08454dfa3c4")
+                                                          .applicationSecret("YiiLEUNX00Wp/JnVInhiOw==")
+                                                          .environmentHost("sandbox.sinch.com")
+                                                          .userId(clientside.getText().toString())
+                                                          .build();
 
 
-                                              // Instantiate a SinchClient using the SinchClientBuilder.
+                                                  sinchClient.setSupportMessaging(true);
+                                                  sinchClient.startListeningOnActiveConnection();
+                                                  sinchClient.start();
 
-                                              sinchClient = Sinch.getSinchClientBuilder().context(context)
-                                                      .applicationKey("b9fe18db-32c1-4025-aad8-b08454dfa3c4")
-                                                      .applicationSecret("YiiLEUNX00Wp/JnVInhiOw==")
-                                                      .environmentHost("sandbox.sinch.com")
-                                                      .userId(clientside.getText().toString())
-                                                      .build();
+                                                  final MessageClient messageClient = sinchClient.getMessageClient();
+                                                  //fromWeb.setText(sinchClient.getLocalUserId());
+                                                  messageClient.addMessageClientListener(new MessageClientListener() {
+                                                      @Override
+                                                      public void onIncomingMessage(MessageClient messageClient, final Message message) {
 
+                                                          //fromWeb.setText(message.getTextBody());
+                                                          clientside.setText(message.getTextBody());
 
-                                              sinchClient.setSupportMessaging(true);
-                                              sinchClient.startListeningOnActiveConnection();
-                                              sinchClient.start();
+                                                          Log.d("myapp", "incoming");
 
-                                              final MessageClient messageClient = sinchClient.getMessageClient();
-                                              //fromWeb.setText(sinchClient.getLocalUserId());
-                                              messageClient.addMessageClientListener(new MessageClientListener() {
-                                                  @Override
-                                                  public void onIncomingMessage(MessageClient messageClient, final Message message) {
+                                                          if (BluetoothChooser.valid())
+                                                              BluetoothChooser.write(message.getTextBody().getBytes());
 
-                                                      //fromWeb.setText(message.getTextBody());
-                                                      clientside.setText(message.getTextBody());
+                                                      }
 
-                                                      Log.d("myapp", "incoming");
+                                                      @Override
+                                                      public void onMessageSent(MessageClient messageClient, Message message, String s) {
+                                                          Log.d("myapp", "outgoing");
+                                                      }
 
-                                                      if(BluetoothChooser.valid())
-                                                          BluetoothChooser.write(message.getTextBody().getBytes());
+                                                      @Override
+                                                      public void onMessageFailed(MessageClient messageClient, Message message, MessageFailureInfo messageFailureInfo) {
+                                                          Log.d("myapp", "fail");
 
-                                                  }
+                                                      }
 
-                                                  @Override
-                                                  public void onMessageSent(MessageClient messageClient, Message message, String s) {
-                                                      Log.d("myapp", "outgoing");
-                                                  }
+                                                      @Override
+                                                      public void onMessageDelivered(MessageClient messageClient, MessageDeliveryInfo messageDeliveryInfo) {
 
-                                                  @Override
-                                                  public void onMessageFailed(MessageClient messageClient, Message message, MessageFailureInfo messageFailureInfo) {
-                                                      Log.d("myapp", "fail");
+                                                      }
 
-                                                  }
+                                                      @Override
+                                                      public void onShouldSendPushData(MessageClient messageClient, Message message, List<PushPair> list) {
 
-                                                  @Override
-                                                  public void onMessageDelivered(MessageClient messageClient, MessageDeliveryInfo messageDeliveryInfo) {
+                                                      }
+                                                  });
 
-                                                  }
-
-                                                  @Override
-                                                  public void onShouldSendPushData(MessageClient messageClient, Message message, List<PushPair> list) {
-
-                                                  }
-                                              });
-
-                                              fromWeb.setText("ready");
+                                                  connection.setImageResource(R.drawable.connected);
+                                                  wifitext.setBackgroundResource(R.drawable.connectedtext);
+                                                  clientside.setVisibility(View.INVISIBLE);
+                                                  logo.setVisibility(View.INVISIBLE);
+                                                  sendbutton.setVisibility(View.INVISIBLE);
+                                                  toplogo.setVisibility(View.VISIBLE);
+                                              }
                                           }
-
 
                                       }
         );
@@ -116,8 +122,10 @@ public class WifiActivity extends Activity {
     }
     @Override
     public void onDestroy() {
-        sinchClient.stopListeningOnActiveConnection();
-        sinchClient.terminate();
+        if (sinchClient != null) {
+            sinchClient.stopListeningOnActiveConnection();
+            sinchClient.terminate();
+        }
         super.onDestroy();
     }
 

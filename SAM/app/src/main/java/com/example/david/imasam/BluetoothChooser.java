@@ -118,21 +118,20 @@ public class BluetoothChooser extends Activity {
                         startActivity(moduleChooser);
                         finish();
 
-                    }
-                    value = value.substring(value.length() - 17);
-                    BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(value);
-                    ctThread = new ConnectThread(device);
-                    ctThread.run();
-                    cTThread = new ConnectedThread(ctThread.mmSocket);
-                    cTThread.start();
-                    if (ctThread.mmSocket.isConnected()) {
-                        Toast.makeText(getApplicationContext(), "matched success", Toast.LENGTH_SHORT).show();
-                        startActivity(moduleChooser);
-                        finish();
-                    }
-
-                    else {
-                        Toast.makeText(getApplicationContext(), "Unable to create a connection \n Try again", Toast.LENGTH_LONG).show();
+                    }   else {
+                        value = value.substring(value.length() - 17);
+                        BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(value);
+                        ctThread = new ConnectThread(device);
+                        ctThread.run();
+                        cTThread = new ConnectedThread(ctThread.mmSocket);
+                        cTThread.start();
+                        if (ctThread.mmSocket.isConnected()) {
+                            Toast.makeText(getApplicationContext(), "matched success", Toast.LENGTH_SHORT).show();
+                            startActivity(moduleChooser);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Unable to create a connection \n Try again", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
             }

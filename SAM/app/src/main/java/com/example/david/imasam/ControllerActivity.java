@@ -3,10 +3,11 @@ package com.example.david.imasam;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import util.LightViewLeft;
@@ -17,34 +18,48 @@ import util.VerticalSeekBar;
 public class ControllerActivity extends Activity {
     private LightViewLeft lightleft;
     private LightViewRight lightright;
-    private static final int[] STATE_THUMB_TAPPED = {R.attr.state_thumb_tapped};
+    private RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
+
+        layout =(RelativeLayout)findViewById(R.id.controllerBackground);
+        setBackground(getIntent().getExtras().getString("Vehicle"));
+
 
         final SeekbarAuto seekbarleft = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarLeft));
         final SeekbarAuto seekbarright = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarRight));
         final TextView bluetoothStatus = (TextView) findViewById(R.id.bluetoothStatus);
         //lightleft = (LightViewLeft) findViewById(R.id.lightleft);
         //lightright = (LightViewRight) findViewById(R.id.LightRight);
-        final Button optionsButton = (Button) findViewById(R.id.options);
-        final Button wifiButton = (Button) findViewById(R.id.wifi);
-        final Button bluetoothButton = (Button) findViewById(R.id.bluetooth);
+        final View homeButton =findViewById(R.id.home);
         final View aButton = findViewById(R.id.aButton);
         final View bButton = findViewById(R.id.bButton);
         final View cButton = findViewById(R.id.cButton);
-        final Intent blueToothChoose = new Intent(this, BluetoothChooser.class);
 
-        final Intent WifiActivity = new Intent(this, WifiActivity.class);
+        final Intent homeActivity = new Intent(this, MainActivity.class);
 
-        wifiButton.setVisibility(View.GONE);
-        bluetoothButton.setVisibility(View.GONE);
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                byte[] sent = new byte[1];
+
+                startActivity(homeActivity);
+                finish();
+            }
+        });
+
 
         aButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                byte[] sent = new byte[1];
+
+                sent[0] = (byte)'w';
                 BluetoothChooser.write(sent);
             }
         });
@@ -52,6 +67,8 @@ public class ControllerActivity extends Activity {
         bButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                byte[] sent = new byte[1];
+                sent[0] = (byte)' ';
                 BluetoothChooser.write(sent);
             }
         });
@@ -59,34 +76,13 @@ public class ControllerActivity extends Activity {
         cButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                byte[] sent = new byte[1];
+                sent[0] = (byte)'a';
                 BluetoothChooser.write(sent);
             }
         });
 
-        optionsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                wifiButton.setVisibility(View.VISIBLE);
-                bluetoothButton.setVisibility(View.VISIBLE);
-                optionsButton.setVisibility(View.GONE);
-            }
-        });
 
-        bluetoothButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startActivity(blueToothChoose);
-                finish();
-            }
-        });
-
-        wifiButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startActivity(WifiActivity);
-                finish();
-            }
-        });
 
         new Thread(new Runnable() {
             @Override
@@ -224,5 +220,14 @@ public class ControllerActivity extends Activity {
                 v.setColor(color);
             }
         });
+    }
+
+    private void setBackground(String vehicle){
+
+        Log.d("he", vehicle);
+        if (vehicle.equals("JUNO"))
+            layout.setBackgroundResource(R.drawable.placeholder);
+        else if(vehicle.equals("TREX"))
+            layout.setBackgroundResource(R.drawable.placeholder);
     }
 }

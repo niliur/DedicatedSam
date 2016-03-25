@@ -27,13 +27,15 @@ public class vehicleChooser extends Activity {
         buttonJuno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SamActivity.putExtra("Vehicle", "JUNO");
+                startActivity(SamActivity);
             }
         });
 
         buttonSam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SamActivity.putExtra("Vehicle", "SAM");
                 startActivity(SamActivity);
             }
         });
@@ -41,7 +43,8 @@ public class vehicleChooser extends Activity {
         buttonTrex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SamActivity.putExtra("Vehicle", "TREX");
+                startActivity(SamActivity);
             }
         });
 
@@ -53,7 +56,11 @@ public class vehicleChooser extends Activity {
         });
     }
 
-
+    @Override
+    public void onBackPressed(){
+        final Intent blueToothActivity = new Intent(this, BluetoothChooser.class);
+        startActivity(blueToothActivity);
+    }
 
 
 
