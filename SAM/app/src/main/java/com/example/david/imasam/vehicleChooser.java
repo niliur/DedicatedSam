@@ -60,6 +60,7 @@ public class vehicleChooser extends Activity {
     public void onBackPressed(){
         final Intent blueToothActivity = new Intent(this, BluetoothChooser.class);
         startActivity(blueToothActivity);
+        finish();
     }
 
 

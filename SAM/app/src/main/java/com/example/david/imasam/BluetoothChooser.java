@@ -324,7 +324,16 @@ public class BluetoothChooser extends Activity {
         cTThread.write(bytes);
     }
     public static boolean valid(){
+        if(ctThread == null)
+            return false;
         return ctThread.mmSocket.isConnected();
+    }
+
+    @Override
+    public void onBackPressed(){
+        final Intent mainActivity = new Intent(this, MainActivity.class);
+        startActivity(mainActivity);
+        finish();
     }
 }
 

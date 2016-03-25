@@ -3,8 +3,8 @@
     <item>
         <shape>
             <size
-                android:height="60dp"
-                android:width="60dp" />
+                android:height="50dp"
+                android:width="50dp" />
 
             <solid android:color="@android:color/transparent" />
         </shape>
