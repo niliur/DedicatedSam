@@ -11,10 +11,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
+import static com.example.david.imasam.R.id.junoButton;
+import static com.example.david.imasam.R.id.remoteButton;
 import static com.example.david.imasam.R.id.samButton;
 import static com.example.david.imasam.R.id.aboutButton;
-import static com.example.david.imasam.R.id.start;
-import static com.example.david.imasam.R.id.startButton;
+import static com.example.david.imasam.R.id.trexButton;
 
 public class MainActivity extends Activity {
 
@@ -29,11 +30,48 @@ private boolean btchoosen = false;
         final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         final int REQUEST_ENABLE_BT = 1;
         final Intent blueToothChoose = new Intent(this, BluetoothChooser.class);
-        final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
         final Intent aboutPage = new Intent(this, AboutPage.class);
+        final Intent WifiActivity = new Intent(this, WifiActivity.class);
 
-        final View buttonStart = findViewById(startButton);
-        final View buttonAbout = findViewById(aboutButton);
+        final View buttonAbout = findViewById(aboutButton);        final View buttonJuno = findViewById(junoButton);
+        final View buttonSam = findViewById(samButton);
+        final View buttonTrex = findViewById(trexButton);
+        final View buttonRemote = findViewById(remoteButton);
+
+
+        buttonJuno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                blueToothChoose.putExtra("Vehicle", "JUNO");
+                startActivity(blueToothChoose);
+                finish();
+            }
+        });
+
+        buttonSam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                blueToothChoose.putExtra("Vehicle", "SAM");
+                startActivity(blueToothChoose);
+                finish();
+            }
+        });
+
+        buttonTrex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                blueToothChoose.putExtra("Vehicle", "TREX");
+                startActivity(blueToothChoose);
+                finish();
+            }
+        });
+
+        buttonRemote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(WifiActivity);
+            }
+        });
 
 
         if (mBluetoothAdapter == null) {
@@ -48,12 +86,6 @@ private boolean btchoosen = false;
             Toast.makeText(getApplicationContext(), "Enable bluetooth before continuing", Toast.LENGTH_SHORT).show();
         }
 
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(blueToothChoose);
-                finish();
-            }
-        });
 
         buttonAbout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

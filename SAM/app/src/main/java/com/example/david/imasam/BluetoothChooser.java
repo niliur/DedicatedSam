@@ -42,7 +42,7 @@ public class BluetoothChooser extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final Intent moduleChooser = new Intent(this, vehicleChooser.class);
+        final Intent controller = new Intent(this, ControllerActivity.class);
         setContentView(R.layout.activity_bluetooth_chooser);
         isListopen = true;
         btArray = new ArrayAdapter<String>(this, R.layout.custom_list_item);
@@ -114,8 +114,8 @@ public class BluetoothChooser extends Activity {
                 private void valueChecker(String value) {
                     if (value == "debugmode"){
                         ctThread = new ConnectThread(mBluetoothAdapter.getRemoteDevice("00:43:A8:23:10:F0"));
-
-                        startActivity(moduleChooser);
+                        controller.putExtra("Vehicle", getIntent().getExtras().getString("Vehicle"));
+                        startActivity(controller);
                         finish();
 
                     }   else {
@@ -127,7 +127,8 @@ public class BluetoothChooser extends Activity {
                         cTThread.start();
                         if (ctThread.mmSocket.isConnected()) {
                             Toast.makeText(getApplicationContext(), "matched success", Toast.LENGTH_SHORT).show();
-                            startActivity(moduleChooser);
+                            controller.putExtra("Vehicle", getIntent().getExtras().getString("Vehicle"));
+                            startActivity(controller);
                             finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Unable to create a connection \n Try again", Toast.LENGTH_LONG).show();

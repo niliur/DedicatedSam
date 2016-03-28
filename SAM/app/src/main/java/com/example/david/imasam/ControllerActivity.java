@@ -226,8 +226,15 @@ public class ControllerActivity extends Activity {
 
         Log.d("he", vehicle);
         if (vehicle.equals("JUNO"))
-            layout.setBackgroundResource(R.drawable.placeholder);
+            layout.setBackgroundResource(R.drawable.junocontrollerbackground);
         else if(vehicle.equals("TREX"))
-            layout.setBackgroundResource(R.drawable.placeholder);
+            layout.setBackgroundResource(R.drawable.trexcontrollerbackground);
+    }
+
+    @Override
+    public void onBackPressed(){
+        final Intent homeactivity = new Intent(this, MainActivity.class);
+        startActivity(homeactivity);
+        finish();
     }
 }
