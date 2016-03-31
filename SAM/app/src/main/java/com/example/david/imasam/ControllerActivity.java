@@ -49,6 +49,7 @@ public class ControllerActivity extends Activity {
                 byte[] sent = new byte[1];
 
                 startActivity(homeActivity);
+                BluetoothChooser.cancel();
                 finish();
             }
         });
@@ -233,8 +234,9 @@ public class ControllerActivity extends Activity {
 
     @Override
     public void onBackPressed(){
-        final Intent homeactivity = new Intent(this, MainActivity.class);
-        startActivity(homeactivity);
+        final Intent bluetoothactivity = new Intent(this, BluetoothChooser.class);
+        startActivity(bluetoothactivity);
+        BluetoothChooser.cancel();
         finish();
     }
 }

@@ -43,6 +43,7 @@ public class BluetoothChooser extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Intent controller = new Intent(this, ControllerActivity.class);
+        final Intent remote = new Intent(this, WifiActivity.class);
         setContentView(R.layout.activity_bluetooth_chooser);
         isListopen = true;
         btArray = new ArrayAdapter<String>(this, R.layout.custom_list_item);
@@ -126,10 +127,15 @@ public class BluetoothChooser extends Activity {
                         cTThread = new ConnectedThread(ctThread.mmSocket);
                         cTThread.start();
                         if (ctThread.mmSocket.isConnected()) {
-                            Toast.makeText(getApplicationContext(), "matched success", Toast.LENGTH_SHORT).show();
-                            controller.putExtra("Vehicle", getIntent().getExtras().getString("Vehicle"));
-                            startActivity(controller);
-                            finish();
+                            if(getIntent().getExtras().getString("mode").equals("REMOTE")) {
+                                startActivity(remote);
+                                finish();
+                            }else {
+                                Toast.makeText(getApplicationContext(), "matched success", Toast.LENGTH_SHORT).show();
+                                controller.putExtra("Vehicle", getIntent().getExtras().getString("Vehicle"));
+                                startActivity(controller);
+                                finish();
+                            }
                         } else {
                             Toast.makeText(getApplicationContext(), "Unable to create a connection \n Try again", Toast.LENGTH_LONG).show();
                         }
@@ -325,9 +331,16 @@ public class BluetoothChooser extends Activity {
         cTThread.write(bytes);
     }
     public static boolean valid(){
-        if(ctThread == null)
+        if(ctThread == null || cTThread == null)
             return false;
         return ctThread.mmSocket.isConnected();
+    }
+
+    public static void cancel(){
+        if(BluetoothChooser.valid()) {
+            ctThread.cancel();
+            cTThread.cancel();
+        }
     }
 
     @Override

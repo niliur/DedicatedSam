@@ -42,6 +42,7 @@ private boolean btchoosen = false;
         buttonJuno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                blueToothChoose.putExtra("mode", "CONTROLLER");
                 blueToothChoose.putExtra("Vehicle", "JUNO");
                 startActivity(blueToothChoose);
                 finish();
@@ -51,6 +52,7 @@ private boolean btchoosen = false;
         buttonSam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                blueToothChoose.putExtra("mode", "CONTROLLER");
                 blueToothChoose.putExtra("Vehicle", "SAM");
                 startActivity(blueToothChoose);
                 finish();
@@ -60,6 +62,7 @@ private boolean btchoosen = false;
         buttonTrex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                blueToothChoose.putExtra("mode", "CONTROLLER");
                 blueToothChoose.putExtra("Vehicle", "TREX");
                 startActivity(blueToothChoose);
                 finish();
@@ -69,7 +72,9 @@ private boolean btchoosen = false;
         buttonRemote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(WifiActivity);
+                blueToothChoose.putExtra("mode", "REMOTE");
+                startActivity(blueToothChoose);
+                finish();
             }
         });
 

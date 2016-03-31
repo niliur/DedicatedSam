@@ -129,4 +129,11 @@ public class WifiActivity extends Activity {
         super.onDestroy();
     }
 
+    @Override
+    public void onBackPressed(){
+        final Intent bluetoothactivity = new Intent(this, BluetoothChooser.class);
+        startActivity(bluetoothactivity);
+        BluetoothChooser.cancel();
+        finish();
+    }
 }
