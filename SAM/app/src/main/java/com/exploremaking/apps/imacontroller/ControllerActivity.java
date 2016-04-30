@@ -1,4 +1,4 @@
-package com.example.david.imasam;
+package com.exploremaking.apps.imacontroller;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,6 +18,7 @@ public class ControllerActivity extends Activity {
     private LightViewLeft lightleft;
     private LightViewRight lightright;
     private RelativeLayout layout;
+    private boolean isActive = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class ControllerActivity extends Activity {
         layout =(RelativeLayout)findViewById(R.id.controllerBackground);
         setBackground(getIntent().getExtras().getString("Vehicle"));
 
+        isActive = true;
 
         final SeekbarAuto seekbarleft = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarLeft));
         final SeekbarAuto seekbarright = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarRight));
@@ -88,7 +89,7 @@ public class ControllerActivity extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true) {
+                while (isActive) {
                     if(BluetoothChooser.valid()) {
                         setText(bluetoothStatus,"Bluetooth connected!");
                         int leftvalue = seekbarleft.getValue();
@@ -237,6 +238,7 @@ public class ControllerActivity extends Activity {
         final Intent bluetoothactivity = new Intent(this, BluetoothChooser.class);
         startActivity(bluetoothactivity);
         BluetoothChooser.cancel();
+        isActive = false;
         finish();
     }
 }

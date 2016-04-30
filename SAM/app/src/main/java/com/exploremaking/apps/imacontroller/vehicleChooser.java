@@ -1,14 +1,14 @@
-package com.example.david.imasam;
+package com.exploremaking.apps.imacontroller;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import static com.example.david.imasam.R.id.remoteButton;
-import static com.example.david.imasam.R.id.junoButton;
-import static com.example.david.imasam.R.id.samButton;
-import static com.example.david.imasam.R.id.trexButton;
+import static com.exploremaking.apps.imacontroller.R.id.remoteButton;
+import static com.exploremaking.apps.imacontroller.R.id.junoButton;
+import static com.exploremaking.apps.imacontroller.R.id.samButton;
+import static com.exploremaking.apps.imacontroller.R.id.trexButton;
 
 public class vehicleChooser extends Activity {
 

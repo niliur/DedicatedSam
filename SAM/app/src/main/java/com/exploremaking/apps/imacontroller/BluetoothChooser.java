@@ -1,4 +1,4 @@
-package com.example.david.imasam;
+package com.exploremaking.apps.imacontroller;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;

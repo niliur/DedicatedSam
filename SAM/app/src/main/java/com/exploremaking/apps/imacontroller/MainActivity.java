@@ -1,21 +1,18 @@
-package com.example.david.imasam;
+package com.exploremaking.apps.imacontroller;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 
-import static com.example.david.imasam.R.id.junoButton;
-import static com.example.david.imasam.R.id.remoteButton;
-import static com.example.david.imasam.R.id.samButton;
-import static com.example.david.imasam.R.id.aboutButton;
-import static com.example.david.imasam.R.id.trexButton;
+import static com.exploremaking.apps.imacontroller.R.id.junoButton;
+import static com.exploremaking.apps.imacontroller.R.id.remoteButton;
+import static com.exploremaking.apps.imacontroller.R.id.samButton;
+import static com.exploremaking.apps.imacontroller.R.id.aboutButton;
+import static com.exploremaking.apps.imacontroller.R.id.trexButton;
 
 public class MainActivity extends Activity {
 

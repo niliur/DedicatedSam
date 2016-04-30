@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.david.imasam" >
+    package="com.exploremaking.apps.imacontroller" >
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -14,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
         <activity
-            android:name=".BluetoothChooser"
+            android:name="com.exploremaking.apps.imacontroller.BluetoothChooser"
             android:label="@string/title_activity_bluetooth_chooser"
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.exploremaking.apps.imacontroller.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -28,22 +28,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ControllerActivity"
+            android:name="com.exploremaking.apps.imacontroller.ControllerActivity"
             android:label="ControllerActivity"
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name=".WifiActivity"
+            android:name="com.exploremaking.apps.imacontroller.WifiActivity"
             android:label="WifiActivity"
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name=".AboutPage"
+            android:name="com.exploremaking.apps.imacontroller.AboutPage"
             android:label="aboutpage"
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name=".vehicleChooser"
+            android:name="com.exploremaking.apps.imacontroller.vehicleChooser"
             android:label="vehicleChooser"
             android:screenOrientation="landscape">
         </activity>
