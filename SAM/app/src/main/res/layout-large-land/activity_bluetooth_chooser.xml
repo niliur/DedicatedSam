@@ -1,37 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/bluetoothbackground"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context="com.exploremaking.apps.imacontroller.BluetoothChooser">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bluetoothbackground"/>
 
-        <TextView
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/search_grad"
-            android:backgroundTint="@color/purple"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/choosertitle"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_weight="1.05" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/devicesfound"
-            android:layout_width="match_parent"
-            android:fadingEdge="none"
-            android:textColor="@android:color/black"
-            android:layout_height="191dp"
-            android:layout_weight="4.67"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/choosertitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:background="@drawable/search_grad"
+                android:backgroundTint="@color/purple"
+                android:gravity="center"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <ListView
+                android:id="@+id/devicesfound"
+                android:layout_width="match_parent"
+                android:layout_height="191dp"
+                android:layout_weight="4.67"
+                android:fadingEdge="none"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </FrameLayout>
 </RelativeLayout>
