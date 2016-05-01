@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootRL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:alignmentMode="alignBounds"
+    android:background="@color/white"
+    android:columnCount="1"
+    android:columnOrderPreserved="false"
+    android:orientation="vertical"
+    android:rowCount="2"
+    android:useDefaultMargins="false">
+
+    <LinearLayout android:baselineAligned="false">
+
+        <FrameLayout
+            android:id="@+id/junoButton"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:foreground="@drawable/rounded_button_selector">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/junobutton" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/samButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/rounded_button_selector">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/sambutton" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/trexButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/rounded_button_selector">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/trexbutton" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout android:baselineAligned="false">
+
+        <FrameLayout
+            android:id="@+id/remoteButton"
+            android:layout_width="1000dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/rounded_button_selector">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/remotebutton"
+                android:layout_gravity="center_horizontal" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/futurecontent1"
+            android:layout_width="1000dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/rounded_button_selector">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/comingsoon"
+                android:layout_gravity="center_horizontal" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/futurecontent2"
+            android:layout_width="1000dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/rounded_button_selector">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/comingsoon"
+                android:layout_gravity="center_horizontal" />
+        </FrameLayout>
+    </LinearLayout>
+</GridLayout>
+
+
