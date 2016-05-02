@@ -8,9 +8,8 @@
 
     <FrameLayout
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/junoButton"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -26,11 +25,10 @@
 
     <FrameLayout
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/trexButton"
         android:layout_below="@+id/samButton"
         android:layout_alignStart="@+id/samButton"
-        android:layout_marginTop="10dp"
         android:foreground="@drawable/rounded_button_selector" >
 
         <ImageView
@@ -42,9 +40,8 @@
 
     <FrameLayout
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/samButton"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="530dp"
         android:layout_below="@+id/junoButton"
         android:layout_alignStart="@+id/junoButton"
@@ -59,11 +56,10 @@
 
     <FrameLayout
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/remoteButton"
         android:layout_below="@+id/trexButton"
         android:layout_alignStart="@+id/trexButton"
-        android:layout_marginTop="10dp"
         android:foreground="@drawable/rounded_button_selector" >
 
         <ImageView
@@ -75,9 +71,8 @@
 
     <FrameLayout
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/aboutButton"
-        android:layout_marginTop="10dp"
         android:layout_below="@+id/remoteButton"
         android:layout_alignStart="@+id/remoteButton"
         android:foreground="@drawable/rounded_button_selector" >
