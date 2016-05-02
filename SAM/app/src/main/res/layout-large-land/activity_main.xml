@@ -27,7 +27,7 @@
             <FrameLayout
                 android:id="@+id/junoButton"
                 android:layout_width="@dimen/main_button_width"
-                android:layout_height="@dimen/main_button_height"
+                android:layout_height="@dimen/main_button_height_large"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="@dimen/main_button_margin"
@@ -44,8 +44,14 @@
             <FrameLayout
                 android:id="@+id/trexButton"
                 android:layout_width="@dimen/main_button_width"
+<<<<<<< HEAD
                 android:layout_height="@dimen/main_button_height"
                 android:layout_weight="1"
+=======
+                android:layout_height="@dimen/main_button_height_large"
+                android:layout_alignStart="@+id/samButton"
+                android:layout_below="@+id/samButton"
+>>>>>>> 5ad805e18223009fb3e09cf8a8390177eba6095c
                 android:layout_marginTop="@dimen/main_button_margin"
                 android:foreground="@drawable/rounded_button_selector">
 
@@ -59,8 +65,15 @@
             <FrameLayout
                 android:id="@+id/samButton"
                 android:layout_width="@dimen/main_button_width"
+<<<<<<< HEAD
                 android:layout_height="@dimen/main_button_height"
                 android:layout_weight="1"
+=======
+                android:layout_height="@dimen/main_button_height_large"
+                android:layout_alignStart="@+id/junoButton"
+                android:layout_below="@+id/junoButton"
+                android:layout_marginEnd="530dp"
+>>>>>>> 5ad805e18223009fb3e09cf8a8390177eba6095c
                 android:layout_marginTop="@dimen/main_button_margin"
                 android:foreground="@drawable/rounded_button_selector">
 
@@ -74,8 +87,14 @@
             <FrameLayout
                 android:id="@+id/remoteButton"
                 android:layout_width="@dimen/main_button_width"
+<<<<<<< HEAD
                 android:layout_height="@dimen/main_button_height"
                 android:layout_weight="1"
+=======
+                android:layout_height="@dimen/main_button_height_large"
+                android:layout_alignStart="@+id/trexButton"
+                android:layout_below="@+id/trexButton"
+>>>>>>> 5ad805e18223009fb3e09cf8a8390177eba6095c
                 android:layout_marginTop="@dimen/main_button_margin"
                 android:foreground="@drawable/rounded_button_selector">
 
@@ -89,8 +108,14 @@
             <FrameLayout
                 android:id="@+id/aboutButton"
                 android:layout_width="@dimen/main_button_width"
+<<<<<<< HEAD
                 android:layout_height="@dimen/main_button_height"
                 android:layout_weight="1"
+=======
+                android:layout_height="@dimen/main_button_height_large"
+                android:layout_alignStart="@+id/remoteButton"
+                android:layout_below="@+id/remoteButton"
+>>>>>>> 5ad805e18223009fb3e09cf8a8390177eba6095c
                 android:layout_marginTop="@dimen/main_button_margin"
                 android:foreground="@drawable/rounded_button_selector">
 
