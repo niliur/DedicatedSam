@@ -45,7 +45,7 @@ private boolean btchoosen = false;
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int buttonMargin = (metrics.heightPixels - 5*(int) getResources().getDimension(R.dimen.main_button_height_normal))/8;
+        int buttonMargin = (metrics.heightPixels - 5*(int) getResources().getDimension(R.dimen.main_button_height_large))/8;
 
 
         //Dynamically setting the margin of the buttons

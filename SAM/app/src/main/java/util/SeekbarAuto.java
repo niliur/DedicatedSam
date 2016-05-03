@@ -5,7 +5,7 @@ import android.widget.SeekBar;
 /**
  * Created by David on 2016-01-04.
  */
-public class SeekbarAuto {
+public class SeekbarAuto{
 
     private final VerticalSeekBar vseekBar;
     private int value = 0;

@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,7 +30,7 @@ public class ControllerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
 
-        layout =(RelativeLayout)findViewById(R.id.controllerBackground);
+        layout = (RelativeLayout) findViewById(R.id.controllerBackground);
         setBackground(getIntent().getExtras().getString("Vehicle"));
 
         isActive = true;
@@ -36,10 +40,79 @@ public class ControllerActivity extends Activity {
         final TextView bluetoothStatus = (TextView) findViewById(R.id.bluetoothStatus);
         //lightleft = (LightViewLeft) findViewById(R.id.lightleft);
         //lightright = (LightViewRight) findViewById(R.id.LightRight);
-        final View homeButton =findViewById(R.id.home);
+        final View homeButton = findViewById(R.id.home);
         final View aButton = findViewById(R.id.aButton);
         final View bButton = findViewById(R.id.bButton);
         final View cButton = findViewById(R.id.cButton);
+        final View buttonHolder = findViewById(R.id.buttonHolder);
+
+        //Setting up proportions
+        double backgroundProp = 1500 / 780;
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        double displayProp = metrics.widthPixels / metrics.heightPixels;
+        boolean displayIsWider = true;
+        if (displayProp < backgroundProp) {
+            displayIsWider = false;
+        }
+
+        int buttonMargin;
+        int buttonMarginRight;
+        RelativeLayout.LayoutParams a;
+        RelativeLayout.LayoutParams b;
+        RelativeLayout.LayoutParams c;
+        FrameLayout.LayoutParams holder;
+
+
+        if (findViewById(R.id.controllerBackground).getTag().equals("normal")) {
+
+            buttonMargin = (metrics.heightPixels - 3 * (int) getResources().getDimension(R.dimen.controller_button_raduis_normal)) / 6;
+            buttonMarginRight = metrics.widthPixels / 20;
+
+
+            //Dynamically setting the margin of the buttons
+            a = (RelativeLayout.LayoutParams) aButton.getLayoutParams();
+            a.topMargin = 2 * buttonMargin;
+            aButton.setLayoutParams(a);
+
+            b = (RelativeLayout.LayoutParams) bButton.getLayoutParams();
+            b.topMargin = buttonMargin;
+            bButton.setLayoutParams(b);
+
+            c = (RelativeLayout.LayoutParams) cButton.getLayoutParams();
+            c.topMargin = buttonMargin;
+            c.bottomMargin = 2 * buttonMargin;
+            cButton.setLayoutParams(c);
+
+            holder = (FrameLayout.LayoutParams) buttonHolder.getLayoutParams();
+            holder.rightMargin = buttonMarginRight;
+            buttonHolder.setLayoutParams(holder);
+        }
+        else if (findViewById(R.id.controllerBackground).getTag().equals("large")) {
+            // ...
+
+            buttonMargin = (metrics.heightPixels - 3 * (int) getResources().getDimension(R.dimen.controller_button_raduis_large)) / 6;
+            buttonMarginRight = metrics.widthPixels / 20;
+
+
+            //Dynamically setting the margin of the buttons
+            a = (RelativeLayout.LayoutParams) aButton.getLayoutParams();
+            a.topMargin = 2 * buttonMargin;
+            aButton.setLayoutParams(a);
+
+            b = (RelativeLayout.LayoutParams) bButton.getLayoutParams();
+            b.topMargin = buttonMargin;
+            bButton.setLayoutParams(b);
+
+            c = (RelativeLayout.LayoutParams) cButton.getLayoutParams();
+            c.topMargin = buttonMargin;
+            c.bottomMargin = 2 * buttonMargin;
+            cButton.setLayoutParams(c);
+
+            holder = (FrameLayout.LayoutParams) buttonHolder.getLayoutParams();
+            holder.rightMargin = buttonMarginRight;
+            buttonHolder.setLayoutParams(holder);
+        }
 
         final Intent homeActivity = new Intent(this, MainActivity.class);
 
@@ -61,7 +134,7 @@ public class ControllerActivity extends Activity {
             public void onClick(View v) {
                 byte[] sent = new byte[1];
 
-                sent[0] = (byte)'w';
+                sent[0] = (byte) 'w';
                 BluetoothChooser.write(sent);
             }
         });
@@ -70,7 +143,7 @@ public class ControllerActivity extends Activity {
             @Override
             public void onClick(View v) {
                 byte[] sent = new byte[1];
-                sent[0] = (byte)' ';
+                sent[0] = (byte) ' ';
                 BluetoothChooser.write(sent);
             }
         });
@@ -79,19 +152,18 @@ public class ControllerActivity extends Activity {
             @Override
             public void onClick(View v) {
                 byte[] sent = new byte[1];
-                sent[0] = (byte)'a';
+                sent[0] = (byte) 'a';
                 BluetoothChooser.write(sent);
             }
         });
-
 
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while (isActive) {
-                    if(BluetoothChooser.valid()) {
-                        setText(bluetoothStatus,"Bluetooth connected!");
+                    if (BluetoothChooser.valid()) {
+                        setText(bluetoothStatus, "Bluetooth connected!");
                         int leftvalue = seekbarleft.getValue();
                         int rightvalue = seekbarright.getValue();
                         //lightleft.colorupdater(leftvalue);
@@ -121,7 +193,7 @@ public class ControllerActivity extends Activity {
                             BluetoothChooser.write(sent);
                         }
                     } else
-                    setText(bluetoothStatus,"Bluetooth disconnected,\n go to options to reconnect");
+                        setText(bluetoothStatus, "Bluetooth disconnected,\n go to options to reconnect");
 
                     try {
                         Thread.sleep(100);
@@ -187,13 +259,14 @@ public class ControllerActivity extends Activity {
                 }
         );
 */
+
     private void inval(final LightViewLeft v) {
-       this.runOnUiThread(new Runnable() {
-           @Override
-           public void run() {
-               v.invalidate();
-           }
-       });
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                v.invalidate();
+            }
+        });
     }
 
     private void inval(final LightViewRight v) {
@@ -224,17 +297,17 @@ public class ControllerActivity extends Activity {
         });
     }
 
-    private void setBackground(String vehicle){
+    private void setBackground(String vehicle) {
 
         Log.d("he", vehicle);
         if (vehicle.equals("JUNO"))
             layout.setBackgroundResource(R.drawable.junocontrollerbackground);
-        else if(vehicle.equals("TREX"))
+        else if (vehicle.equals("TREX"))
             layout.setBackgroundResource(R.drawable.trexcontrollerbackground);
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         final Intent bluetoothactivity = new Intent(this, BluetoothChooser.class);
         startActivity(bluetoothactivity);
         BluetoothChooser.cancel();
