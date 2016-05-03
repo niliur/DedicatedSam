@@ -15,9 +15,14 @@
             android:layout_height="fill_parent"
             android:src="@drawable/mainscreen" />
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_gravity="right"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/main_button_margin"
+            android:weightSum="5"
+            android:layout_marginBottom="@dimen/main_button_margin">
 
             <FrameLayout
                 android:id="@+id/junoButton"
@@ -25,8 +30,8 @@
                 android:layout_height="@dimen/main_button_height_large"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="@dimen/main_button_margin"
+                android:layout_weight="1"
                 android:foreground="@drawable/rounded_button_selector">
 
                 <ImageView
@@ -39,9 +44,14 @@
             <FrameLayout
                 android:id="@+id/trexButton"
                 android:layout_width="@dimen/main_button_width"
+<<<<<<< HEAD
+                android:layout_height="@dimen/main_button_height"
+                android:layout_weight="1"
+=======
                 android:layout_height="@dimen/main_button_height_large"
                 android:layout_alignStart="@+id/samButton"
                 android:layout_below="@+id/samButton"
+>>>>>>> 5ad805e18223009fb3e09cf8a8390177eba6095c
                 android:layout_marginTop="@dimen/main_button_margin"
                 android:foreground="@drawable/rounded_button_selector">
 
@@ -55,10 +65,15 @@
             <FrameLayout
                 android:id="@+id/samButton"
                 android:layout_width="@dimen/main_button_width"
+<<<<<<< HEAD
+                android:layout_height="@dimen/main_button_height"
+                android:layout_weight="1"
+=======
                 android:layout_height="@dimen/main_button_height_large"
                 android:layout_alignStart="@+id/junoButton"
                 android:layout_below="@+id/junoButton"
                 android:layout_marginEnd="530dp"
+>>>>>>> 5ad805e18223009fb3e09cf8a8390177eba6095c
                 android:layout_marginTop="@dimen/main_button_margin"
                 android:foreground="@drawable/rounded_button_selector">
 
@@ -72,9 +87,14 @@
             <FrameLayout
                 android:id="@+id/remoteButton"
                 android:layout_width="@dimen/main_button_width"
+<<<<<<< HEAD
+                android:layout_height="@dimen/main_button_height"
+                android:layout_weight="1"
+=======
                 android:layout_height="@dimen/main_button_height_large"
                 android:layout_alignStart="@+id/trexButton"
                 android:layout_below="@+id/trexButton"
+>>>>>>> 5ad805e18223009fb3e09cf8a8390177eba6095c
                 android:layout_marginTop="@dimen/main_button_margin"
                 android:foreground="@drawable/rounded_button_selector">
 
@@ -88,9 +108,14 @@
             <FrameLayout
                 android:id="@+id/aboutButton"
                 android:layout_width="@dimen/main_button_width"
+<<<<<<< HEAD
+                android:layout_height="@dimen/main_button_height"
+                android:layout_weight="1"
+=======
                 android:layout_height="@dimen/main_button_height_large"
                 android:layout_alignStart="@+id/remoteButton"
                 android:layout_below="@+id/remoteButton"
+>>>>>>> 5ad805e18223009fb3e09cf8a8390177eba6095c
                 android:layout_marginTop="@dimen/main_button_margin"
                 android:foreground="@drawable/rounded_button_selector">
 
@@ -100,7 +125,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/aboutbutton" />
             </FrameLayout>
-        </RelativeLayout>
+        </LinearLayout>
     </FrameLayout>
 
 
