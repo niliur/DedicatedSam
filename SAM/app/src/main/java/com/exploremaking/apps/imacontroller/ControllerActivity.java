@@ -56,63 +56,36 @@ public class ControllerActivity extends Activity {
             displayIsWider = false;
         }
 
-        int buttonMargin;
-        int buttonMarginRight;
-        RelativeLayout.LayoutParams a;
-        RelativeLayout.LayoutParams b;
-        RelativeLayout.LayoutParams c;
-        FrameLayout.LayoutParams holder;
+        int buttonMargin = 0;
+        int buttonMarginRight = metrics.widthPixels / 20;
+        ;
+        RelativeLayout.LayoutParams a = (RelativeLayout.LayoutParams) aButton.getLayoutParams();
+        RelativeLayout.LayoutParams b = (RelativeLayout.LayoutParams) bButton.getLayoutParams();
+        RelativeLayout.LayoutParams c = (RelativeLayout.LayoutParams) cButton.getLayoutParams();
+        FrameLayout.LayoutParams holder = (FrameLayout.LayoutParams) buttonHolder.getLayoutParams();
 
 
         if (findViewById(R.id.controllerBackground).getTag().equals("normal")) {
-
             buttonMargin = (metrics.heightPixels - 3 * (int) getResources().getDimension(R.dimen.controller_button_raduis_normal)) / 6;
-            buttonMarginRight = metrics.widthPixels / 20;
-
-
-            //Dynamically setting the margin of the buttons
-            a = (RelativeLayout.LayoutParams) aButton.getLayoutParams();
-            a.topMargin = 2 * buttonMargin;
-            aButton.setLayoutParams(a);
-
-            b = (RelativeLayout.LayoutParams) bButton.getLayoutParams();
-            b.topMargin = buttonMargin;
-            bButton.setLayoutParams(b);
-
-            c = (RelativeLayout.LayoutParams) cButton.getLayoutParams();
-            c.topMargin = buttonMargin;
-            c.bottomMargin = 2 * buttonMargin;
-            cButton.setLayoutParams(c);
-
-            holder = (FrameLayout.LayoutParams) buttonHolder.getLayoutParams();
-            holder.rightMargin = buttonMarginRight;
-            buttonHolder.setLayoutParams(holder);
-        }
-        else if (findViewById(R.id.controllerBackground).getTag().equals("large")) {
-            // ...
-
+        } else if (findViewById(R.id.controllerBackground).getTag().equals("large")) {
             buttonMargin = (metrics.heightPixels - 3 * (int) getResources().getDimension(R.dimen.controller_button_raduis_large)) / 6;
-            buttonMarginRight = metrics.widthPixels / 20;
-
-
-            //Dynamically setting the margin of the buttons
-            a = (RelativeLayout.LayoutParams) aButton.getLayoutParams();
-            a.topMargin = 2 * buttonMargin;
-            aButton.setLayoutParams(a);
-
-            b = (RelativeLayout.LayoutParams) bButton.getLayoutParams();
-            b.topMargin = buttonMargin;
-            bButton.setLayoutParams(b);
-
-            c = (RelativeLayout.LayoutParams) cButton.getLayoutParams();
-            c.topMargin = buttonMargin;
-            c.bottomMargin = 2 * buttonMargin;
-            cButton.setLayoutParams(c);
-
-            holder = (FrameLayout.LayoutParams) buttonHolder.getLayoutParams();
-            holder.rightMargin = buttonMarginRight;
-            buttonHolder.setLayoutParams(holder);
         }
+
+
+        a.topMargin = 2 * buttonMargin;
+        aButton.setLayoutParams(a);
+
+        b.topMargin = buttonMargin;
+        bButton.setLayoutParams(b);
+
+        c.topMargin = buttonMargin;
+        c.bottomMargin = 2 * buttonMargin;
+        cButton.setLayoutParams(c);
+
+
+        holder.rightMargin = buttonMarginRight;
+        buttonHolder.setLayoutParams(holder);
+
 
         final Intent homeActivity = new Intent(this, MainActivity.class);
 
