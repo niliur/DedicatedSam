@@ -19,8 +19,6 @@ import util.SeekbarAuto;
 import util.VerticalSeekBar;
 
 public class ControllerActivity extends Activity {
-    private LightViewLeft lightleft;
-    private LightViewRight lightright;
     private RelativeLayout layout;
     private boolean isActive = false;
 
@@ -38,8 +36,6 @@ public class ControllerActivity extends Activity {
         final SeekbarAuto seekbarleft = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarLeft));
         final SeekbarAuto seekbarright = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarRight));
         final TextView bluetoothStatus = (TextView) findViewById(R.id.bluetoothStatus);
-        //lightleft = (LightViewLeft) findViewById(R.id.lightleft);
-        //lightright = (LightViewRight) findViewById(R.id.LightRight);
         final View homeButton = findViewById(R.id.home);
         final View aButton = findViewById(R.id.aButton);
         final View bButton = findViewById(R.id.bButton);
@@ -64,13 +60,24 @@ public class ControllerActivity extends Activity {
         RelativeLayout.LayoutParams c = (RelativeLayout.LayoutParams) cButton.getLayoutParams();
         FrameLayout.LayoutParams holder = (FrameLayout.LayoutParams) buttonHolder.getLayoutParams();
 
+        final View barbackright = findViewById(R.id.verticalbackgroundright);
+        final View barbackleft = findViewById(R.id.verticalbackgroundleft);
+        final View leftbar = findViewById(R.id.VerticalSeekBarLeft);
+        final View rightbar = findViewById(R.id.VerticalSeekBarRight);
 
         if (findViewById(R.id.controllerBackground).getTag().equals("normal")) {
             buttonMargin = (metrics.heightPixels - 3 * (int) getResources().getDimension(R.dimen.controller_button_raduis_normal)) / 6;
+            marginchanger(barbackleft, buttonMargin);
+            marginchanger(barbackright, buttonMargin);
+            marginchanger(leftbar, buttonMargin);
+            marginchanger(rightbar, buttonMargin);
         } else if (findViewById(R.id.controllerBackground).getTag().equals("large")) {
             buttonMargin = (metrics.heightPixels - 3 * (int) getResources().getDimension(R.dimen.controller_button_raduis_large)) / 6;
+            marginchanger(barbackleft, 2*buttonMargin);
+            marginchanger(barbackright, 2*buttonMargin);
+            marginchanger(leftbar, 2*buttonMargin);
+            marginchanger(rightbar, 2*buttonMargin);
         }
-
 
         a.topMargin = 2 * buttonMargin;
         aButton.setLayoutParams(a);
@@ -82,13 +89,24 @@ public class ControllerActivity extends Activity {
         c.bottomMargin = 2 * buttonMargin;
         cButton.setLayoutParams(c);
 
-
         holder.rightMargin = buttonMarginRight;
         buttonHolder.setLayoutParams(holder);
 
+        FrameLayout.LayoutParams leftseekbar = (FrameLayout.LayoutParams)leftbar.getLayoutParams();
+        FrameLayout.LayoutParams rightseekbar = (FrameLayout.LayoutParams)rightbar.getLayoutParams();
+        int seekbarwidth = (metrics.widthPixels - buttonMargin * 4)*50/330;
+        leftseekbar.width = seekbarwidth;
+        rightseekbar.width = seekbarwidth;
+
+        final View frameright = findViewById(R.id.rightframe);
+        final View frameleft = findViewById(R.id.leftframe);
+        LinearLayout.LayoutParams rightframeparams = (LinearLayout.LayoutParams)frameright.getLayoutParams();
+        LinearLayout.LayoutParams leftframeparams = (LinearLayout.LayoutParams)frameleft.getLayoutParams();
+        int widthoffset = (metrics.widthPixels * 20 / 100);
+        rightframeparams.leftMargin = widthoffset;
+        leftframeparams.rightMargin = widthoffset;
 
         final Intent homeActivity = new Intent(this, MainActivity.class);
-
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,12 +157,6 @@ public class ControllerActivity extends Activity {
                         setText(bluetoothStatus, "Bluetooth connected!");
                         int leftvalue = seekbarleft.getValue();
                         int rightvalue = seekbarright.getValue();
-                        //lightleft.colorupdater(leftvalue);
-                        //updatelights(lightleft.getShape(), lightleft.colorupdater(leftvalue));
-                        //lightright.colorupdater(rightvalue);
-                        //updatelights(lightright.getShape(), lightright.colorupdater(rightvalue));
-                        //inval(lightleft);
-                        //inval(lightright);
                         byte[] sent = new byte[3];
                         boolean newsent = false;
                         sent[0] = (byte) 180;
@@ -286,5 +298,12 @@ public class ControllerActivity extends Activity {
         BluetoothChooser.cancel();
         isActive = false;
         finish();
+    }
+
+    public void marginchanger(View something, int margin){
+        FrameLayout.LayoutParams barframeright = (FrameLayout.LayoutParams)something.getLayoutParams();
+        barframeright.topMargin = margin;
+        barframeright.bottomMargin = margin;
+
     }
 }
