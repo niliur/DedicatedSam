@@ -22,9 +22,6 @@ import static com.exploremaking.apps.imacontroller.R.id.trexButton;
 
 public class MainActivity extends Activity {
 
-private boolean btchoosen = false;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,34 +39,40 @@ private boolean btchoosen = false;
         final View buttonSam = findViewById(samButton);
         final View buttonTrex = findViewById(trexButton);
         final View buttonRemote = findViewById(remoteButton);
+        RelativeLayout.LayoutParams juno = (RelativeLayout.LayoutParams) buttonJuno.getLayoutParams();
+        RelativeLayout.LayoutParams sam = (RelativeLayout.LayoutParams) buttonSam.getLayoutParams();
+        RelativeLayout.LayoutParams trex = (RelativeLayout.LayoutParams) buttonTrex.getLayoutParams();
+        RelativeLayout.LayoutParams remote = (RelativeLayout.LayoutParams) buttonRemote.getLayoutParams();
+        RelativeLayout.LayoutParams about = (RelativeLayout.LayoutParams) buttonAbout.getLayoutParams();
+
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int buttonMargin = (metrics.heightPixels - 5*(int) getResources().getDimension(R.dimen.main_button_height_large))/8;
+        int buttonMargin = 0;
+        if (findViewById(R.id.rootRL).getTag().equals("normal")) {
+            buttonMargin = (metrics.heightPixels - 5 * (int) getResources().getDimension(R.dimen.main_button_height_normal)) / 8;
 
+        } else if (findViewById(R.id.rootRL).getTag().equals("large")) {
+            buttonMargin = (metrics.heightPixels - 5 * (int) getResources().getDimension(R.dimen.main_button_height_large)) / 8;
+        }
 
         //Dynamically setting the margin of the buttons
-        RelativeLayout.LayoutParams juno = (RelativeLayout.LayoutParams) buttonJuno.getLayoutParams();
-        juno.topMargin = 2*buttonMargin;
+
+        juno.topMargin = 2 * buttonMargin;
         buttonJuno.setLayoutParams(juno);
 
-        RelativeLayout.LayoutParams sam = (RelativeLayout.LayoutParams) buttonSam.getLayoutParams();
         sam.topMargin = buttonMargin;
         buttonSam.setLayoutParams(sam);
 
-        RelativeLayout.LayoutParams trex = (RelativeLayout.LayoutParams) buttonTrex.getLayoutParams();
         trex.topMargin = buttonMargin;
         buttonTrex.setLayoutParams(trex);
 
-        RelativeLayout.LayoutParams remote = (RelativeLayout.LayoutParams) buttonRemote.getLayoutParams();
         remote.topMargin = buttonMargin;
         buttonRemote.setLayoutParams(remote);
 
-        RelativeLayout.LayoutParams about = (RelativeLayout.LayoutParams) buttonAbout.getLayoutParams();
         about.topMargin = buttonMargin;
-        about.bottomMargin = 2*buttonMargin;
+        about.bottomMargin = 2 * buttonMargin;
         buttonAbout.setLayoutParams(about);
-
 
 
         buttonJuno.setOnClickListener(new View.OnClickListener() {

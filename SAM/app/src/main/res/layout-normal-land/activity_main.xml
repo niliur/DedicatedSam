@@ -4,10 +4,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainscreen">
+    android:background="@drawable/mainscreen"
+    android:tag="normal">
 
     <FrameLayout
-        android:layout_width="100dp"
+        android:layout_width="@dimen/main_button_width_normal"
         android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/junoButton"
         android:layout_marginEnd="50dp"
@@ -24,7 +25,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="100dp"
+        android:layout_width="@dimen/main_button_width_normal"
         android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/trexButton"
         android:layout_below="@+id/samButton"
@@ -39,7 +40,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="100dp"
+        android:layout_width="@dimen/main_button_width_normal"
         android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/samButton"
         android:layout_marginEnd="530dp"
@@ -55,7 +56,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="100dp"
+        android:layout_width="@dimen/main_button_width_normal"
         android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/remoteButton"
         android:layout_below="@+id/trexButton"
@@ -70,7 +71,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="100dp"
+        android:layout_width="@dimen/main_button_width_normal"
         android:layout_height="@dimen/main_button_height_normal"
         android:id="@+id/aboutButton"
         android:layout_below="@+id/remoteButton"
