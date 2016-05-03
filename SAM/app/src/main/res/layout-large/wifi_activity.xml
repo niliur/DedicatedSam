@@ -1,83 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="0dp"
+        android:layout_weight="15">
+
         <ImageView
+            android:id="@+id/toplogo"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/imalogo"
-            android:scaleType="fitStart"
-            android:id="@+id/toplogo"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:scaleType="fitStart"
+            android:src="@drawable/imalogo" />
 
     </RelativeLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="110dp"
-        android:background="@drawable/wifi_text"
-        android:gravity="center"
         android:id="@+id/wifi_text"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="10dp" />
+        android:layout_weight="30"
+        android:background="@drawable/wifi_text"
+        android:gravity="center" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal">
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/nameField"
-            android:textColor="@android:color/black"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="110dp"
-            android:layout_marginRight="175dp"/>
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="17.5">
 
         <FrameLayout
-            android:layout_width="120dp"
-            android:layout_marginRight="25dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/nameFieldFrame"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/sendbutton"
+            android:layout_toLeftOf="@+id/imalogo"
+            android:layout_toEndOf="@id/imalogo">
+
+            <EditText
+                android:id="@+id/nameField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/black" />
+        </FrameLayout>
+
+        <FrameLayout
             android:id="@+id/sendbutton"
-            android:foreground="@drawable/rounded_button_selector"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true">
+            android:layout_marginRight="25dp"
+            android:foreground="@drawable/rounded_button_selector">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:background ="@drawable/enter_name"
-                />
+                android:background="@drawable/enter_name"
+                android:scaleType="fitXY" />
 
         </FrameLayout>
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:src="@drawable/imalogo"
+            android:id="@+id/imalogo"
+            android:layout_width="210dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:id="@+id/imalogo"
-            android:layout_marginRight="500dp"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/imalogo" />
     </RelativeLayout>
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/connecting"
         android:id="@+id/connectionStatus"
-        android:layout_gravity="center_horizontal" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="17.5"
+        android:src="@drawable/connecting" />
 
 </LinearLayout>

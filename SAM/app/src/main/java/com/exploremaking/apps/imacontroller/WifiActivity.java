@@ -3,10 +3,14 @@ package com.exploremaking.apps.imacontroller;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.sinch.android.rtc.PushPair;
@@ -39,7 +43,17 @@ public class WifiActivity extends Activity {
         final ImageView logo = (ImageView) findViewById(R.id.imalogo);
         final ImageView toplogo = (ImageView) findViewById(R.id.toplogo);
 
-        toplogo.setVisibility(View.INVISIBLE);
+         toplogo.setVisibility(View.INVISIBLE);
+
+        //margins
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int buttonMarginBase = metrics.widthPixels/80;
+        marginchangerWifiRelative(toplogo, 4 * buttonMarginBase, 4 * buttonMarginBase, 2 * buttonMarginBase, 2 * buttonMarginBase);
+        marginchangerWifiLinear(wifitext, 10*buttonMarginBase, 10*buttonMarginBase, 0, buttonMarginBase);
+        marginchangerWifiRelative(sendbutton, 4*buttonMarginBase, 4*buttonMarginBase, 0, 0);
+        marginchangerWifiRelative(logo, 4*buttonMarginBase, 4*buttonMarginBase, 0, 0);
+
 
         sendbutton.setOnClickListener(new View.OnClickListener() {
                                           @Override
@@ -130,5 +144,23 @@ public class WifiActivity extends Activity {
         startActivity(bluetoothactivity);
         BluetoothChooser.cancel();
         finish();
+    }
+
+    public void marginchangerWifiRelative(View something, int marginLeft, int marginRight, int marginUp, int marginDown){
+        RelativeLayout.LayoutParams barframeright = (RelativeLayout.LayoutParams)something.getLayoutParams();
+        barframeright.topMargin = marginUp;
+        barframeright.bottomMargin = marginDown;
+        barframeright.rightMargin = marginRight;
+        barframeright.leftMargin = marginLeft;
+        something.setLayoutParams(barframeright);
+    }
+
+    public void marginchangerWifiLinear(View something, int marginLeft, int marginRight, int marginUp, int marginDown){
+        LinearLayout.LayoutParams barframeright = (LinearLayout.LayoutParams)something.getLayoutParams();
+        barframeright.topMargin = marginUp;
+        barframeright.bottomMargin = marginDown;
+        barframeright.rightMargin = marginRight;
+        barframeright.leftMargin = marginLeft;
+        something.setLayoutParams(barframeright);
     }
 }
