@@ -1,93 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rootRL"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainscreen"
+    android:orientation="vertical"
     android:tag="large">
 
     <FrameLayout
-        android:layout_width="@dimen/main_button_width_large"
-        android:layout_height="@dimen/main_button_height_large"
-        android:id="@+id/junoButton"
-        android:layout_marginEnd="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:foreground="@drawable/rounded_button_selector" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/juno_button" />
-    </FrameLayout>
+            android:src="@drawable/mainscreen"/>
 
-    <FrameLayout
-        android:layout_width="@dimen/main_button_width_large"
-        android:layout_height="@dimen/main_button_height_large"
-        android:id="@+id/trexButton"
-        android:layout_below="@+id/samButton"
-        android:layout_alignStart="@+id/samButton"
-        android:foreground="@drawable/rounded_button_selector" >
-
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/trex_button" />
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/junoButton"
+                android:layout_width="@dimen/main_button_width_large"
+                android:layout_height="@dimen/main_button_height_large"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="50dp"
+                android:foreground="@drawable/rounded_button_selector">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/juno_button" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/trexButton"
+                android:layout_width="@dimen/main_button_width_large"
+                android:layout_height="@dimen/main_button_height_large"
+                android:layout_alignStart="@+id/samButton"
+                android:layout_below="@+id/samButton"
+                android:foreground="@drawable/rounded_button_selector">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/trex_button" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/samButton"
+                android:layout_width="@dimen/main_button_width_large"
+                android:layout_height="@dimen/main_button_height_large"
+                android:layout_alignStart="@+id/junoButton"
+                android:layout_below="@+id/junoButton"
+                android:layout_marginEnd="530dp"
+                android:foreground="@drawable/rounded_button_selector">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/sam_button" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/remoteButton"
+                android:layout_width="@dimen/main_button_width_large"
+                android:layout_height="@dimen/main_button_height_large"
+                android:layout_alignStart="@+id/trexButton"
+                android:layout_below="@+id/trexButton"
+                android:foreground="@drawable/rounded_button_selector">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/remotebutton" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/aboutButton"
+                android:layout_width="@dimen/main_button_width_large"
+                android:layout_height="@dimen/main_button_height_large"
+                android:layout_alignStart="@+id/remoteButton"
+                android:layout_below="@+id/remoteButton"
+                android:foreground="@drawable/rounded_button_selector">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/aboutbutton" />
+            </FrameLayout>
+        </RelativeLayout>
+
     </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="@dimen/main_button_width_large"
-        android:layout_height="@dimen/main_button_height_large"
-        android:id="@+id/samButton"
-        android:layout_marginEnd="530dp"
-        android:layout_below="@+id/junoButton"
-        android:layout_alignStart="@+id/junoButton"
-        android:foreground="@drawable/rounded_button_selector" >
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/sam_button" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="@dimen/main_button_width_large"
-        android:layout_height="@dimen/main_button_height_large"
-        android:id="@+id/remoteButton"
-        android:layout_below="@+id/trexButton"
-        android:layout_alignStart="@+id/trexButton"
-        android:foreground="@drawable/rounded_button_selector" >
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/remotebutton" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="@dimen/main_button_width_large"
-        android:layout_height="@dimen/main_button_height_large"
-        android:id="@+id/aboutButton"
-        android:layout_below="@+id/remoteButton"
-        android:layout_alignStart="@+id/remoteButton"
-        android:foreground="@drawable/rounded_button_selector" >
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/aboutbutton" />
-    </FrameLayout>
-
-
-
-
 
 </RelativeLayout>
 
