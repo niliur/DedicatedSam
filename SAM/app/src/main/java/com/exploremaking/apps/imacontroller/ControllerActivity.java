@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,7 +20,7 @@ import util.SeekbarAuto;
 import util.VerticalSeekBar;
 
 public class ControllerActivity extends Activity {
-    private RelativeLayout layout;
+    private ImageView layout;
     private boolean isActive = false;
 
     @Override
@@ -28,14 +29,13 @@ public class ControllerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
 
-        layout = (RelativeLayout) findViewById(R.id.controllerBackground);
+        layout = (ImageView) findViewById(R.id.backgroundpic);
         setBackground(getIntent().getExtras().getString("Vehicle"));
 
         isActive = true;
 
         final SeekbarAuto seekbarleft = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarLeft));
         final SeekbarAuto seekbarright = new SeekbarAuto((VerticalSeekBar) findViewById(R.id.VerticalSeekBarRight));
-        final TextView bluetoothStatus = (TextView) findViewById(R.id.bluetoothStatus);
         final View homeButton = findViewById(R.id.home);
         final View aButton = findViewById(R.id.aButton);
         final View bButton = findViewById(R.id.bButton);
@@ -123,28 +123,33 @@ public class ControllerActivity extends Activity {
         aButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                byte[] sent = new byte[1];
-
-                sent[0] = (byte) 'w';
-                BluetoothChooser.write(sent);
+                if (BluetoothChooser.valid()) {
+                    byte[] sent = new byte[1];
+                    sent[0] = (byte) 'w';
+                    BluetoothChooser.write(sent);
+                }
             }
         });
 
         bButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                byte[] sent = new byte[1];
-                sent[0] = (byte) ' ';
-                BluetoothChooser.write(sent);
+                if (BluetoothChooser.valid()) {
+                    byte[] sent = new byte[1];
+                    sent[0] = (byte) ' ';
+                    BluetoothChooser.write(sent);
+                }
             }
         });
 
         cButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                byte[] sent = new byte[1];
-                sent[0] = (byte) 'a';
-                BluetoothChooser.write(sent);
+                if (BluetoothChooser.valid()) {
+                    byte[] sent = new byte[1];
+                    sent[0] = (byte) 'a';
+                    BluetoothChooser.write(sent);
+                }
             }
         });
 
@@ -154,7 +159,6 @@ public class ControllerActivity extends Activity {
             public void run() {
                 while (isActive) {
                     if (BluetoothChooser.valid()) {
-                        setText(bluetoothStatus, "Bluetooth connected!");
                         int leftvalue = seekbarleft.getValue();
                         int rightvalue = seekbarright.getValue();
                         byte[] sent = new byte[3];
@@ -177,8 +181,7 @@ public class ControllerActivity extends Activity {
                         if (newsent) {
                             BluetoothChooser.write(sent);
                         }
-                    } else
-                        setText(bluetoothStatus, "Bluetooth disconnected,\n go to options to reconnect");
+                    }
 
                     try {
                         Thread.sleep(100);
@@ -286,9 +289,9 @@ public class ControllerActivity extends Activity {
 
         Log.d("he", vehicle);
         if (vehicle.equals("JUNO"))
-            layout.setBackgroundResource(R.drawable.junocontrollerbackground);
+            layout.setImageResource(R.drawable.junocontrollerbackground);
         else if (vehicle.equals("TREX"))
-            layout.setBackgroundResource(R.drawable.trexcontrollerbackground);
+            layout.setImageResource(R.drawable.trexcontrollerbackground);
     }
 
     @Override

@@ -13,6 +13,7 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:id="@+id/backgroundpic"
             android:src="@drawable/controllerbackground" />
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -151,21 +152,6 @@
                     android:background="@drawable/home_button"
                     android:scaleType="fitXY" />
             </FrameLayout>
-
-            <TextView
-                android:id="@+id/bluetoothStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="false"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="false"
-                android:layout_marginLeft="220dp"
-                android:layout_marginRight="180dp"
-                android:gravity="center"
-                android:text="Determining Bluetooth Status..."
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@android:color/black" />
         </RelativeLayout>
     </FrameLayout>
 </RelativeLayout>

@@ -10,4 +10,6 @@
     <dimen name="main_button_margin">35dp</dimen>
     <dimen name="controller_button_raduis_normal">70dp</dimen>
     <dimen name="controller_button_raduis_large">120dp</dimen>
+    <dimen name="homescreenwidthlarge">120dp</dimen>
+    <dimen name="homescreenheightlarge">74dp</dimen>
 </resources>
