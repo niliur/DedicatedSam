@@ -27,12 +27,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String website = getString(R.string.website_address);
         final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         final int REQUEST_ENABLE_BT = 1;
         final Intent blueToothChoose = new Intent(this, BluetoothChooser.class);
         final Intent aboutPage = new Intent(this, AboutPage.class);
-        final Intent WifiActivity = new Intent(this, WifiActivity.class);
 
         final View buttonAbout = findViewById(aboutButton);
         final View buttonJuno = findViewById(junoButton);
@@ -78,39 +76,55 @@ public class MainActivity extends Activity {
         buttonJuno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blueToothChoose.putExtra("mode", "CONTROLLER");
-                blueToothChoose.putExtra("Vehicle", "JUNO");
-                startActivity(blueToothChoose);
-                finish();
+                if (!mBluetoothAdapter.isEnabled()) {
+                    Toast.makeText(getApplicationContext(), "Enable bluetooth before continuing", Toast.LENGTH_SHORT).show();
+                } else {
+                    blueToothChoose.putExtra("mode", "CONTROLLER");
+                    blueToothChoose.putExtra("Vehicle", "JUNO");
+                    startActivity(blueToothChoose);
+                    finish();
+                }
             }
         });
 
         buttonSam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blueToothChoose.putExtra("mode", "CONTROLLER");
-                blueToothChoose.putExtra("Vehicle", "SAM");
-                startActivity(blueToothChoose);
-                finish();
+                if (!mBluetoothAdapter.isEnabled()) {
+                    Toast.makeText(getApplicationContext(), "Enable bluetooth before continuing", Toast.LENGTH_SHORT).show();
+                } else {
+                    blueToothChoose.putExtra("mode", "CONTROLLER");
+                    blueToothChoose.putExtra("Vehicle", "SAM");
+                    startActivity(blueToothChoose);
+                    finish();
+                }
             }
         });
 
         buttonTrex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blueToothChoose.putExtra("mode", "CONTROLLER");
-                blueToothChoose.putExtra("Vehicle", "TREX");
-                startActivity(blueToothChoose);
-                finish();
+                if (!mBluetoothAdapter.isEnabled()) {
+                    Toast.makeText(getApplicationContext(), "Enable bluetooth before continuing", Toast.LENGTH_SHORT).show();
+                } else {
+                    blueToothChoose.putExtra("mode", "CONTROLLER");
+                    blueToothChoose.putExtra("Vehicle", "TREX");
+                    startActivity(blueToothChoose);
+                    finish();
+                }
             }
         });
 
         buttonRemote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blueToothChoose.putExtra("mode", "REMOTE");
-                startActivity(blueToothChoose);
-                finish();
+                if (!mBluetoothAdapter.isEnabled()) {
+                    Toast.makeText(getApplicationContext(), "Enable bluetooth before continuing", Toast.LENGTH_SHORT).show();
+                } else {
+                    blueToothChoose.putExtra("mode", "REMOTE");
+                    startActivity(blueToothChoose);
+                    finish();
+                }
             }
         });
 
@@ -123,10 +137,6 @@ public class MainActivity extends Activity {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
-        if (!mBluetoothAdapter.isEnabled()) {
-            Toast.makeText(getApplicationContext(), "Enable bluetooth before continuing", Toast.LENGTH_SHORT).show();
-        }
-
 
         buttonAbout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

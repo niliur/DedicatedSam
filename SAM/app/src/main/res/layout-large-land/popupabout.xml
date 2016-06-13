@@ -35,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:textColor="@color/white"
-                android:text="google stack overflow Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
-                 android:textStyle="italic" />
+                android:text="hello, this page is currently in the works, you're welcome to visit our site!"
+                android:textStyle="italic" />
         </LinearLayout>
     </ScrollView>
 

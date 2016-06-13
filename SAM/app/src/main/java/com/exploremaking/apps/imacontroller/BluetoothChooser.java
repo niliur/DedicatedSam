@@ -27,7 +27,6 @@ import java.util.UUID;
 public class BluetoothChooser extends Activity {
 
     static private boolean isListopen;
-    private int REQUEST_ENABLE_BT = 1;
     private boolean found = false;
     ArrayAdapter<String> btArray;
     private ListView devicesfound;
