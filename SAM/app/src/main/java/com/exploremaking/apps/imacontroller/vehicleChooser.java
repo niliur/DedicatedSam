@@ -10,7 +10,7 @@ import static com.exploremaking.apps.imacontroller.R.id.junoButton;
 import static com.exploremaking.apps.imacontroller.R.id.samButton;
 import static com.exploremaking.apps.imacontroller.R.id.trexButton;
 
-public class vehicleChooser extends Activity {
+public class VehicleChooser extends Activity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
