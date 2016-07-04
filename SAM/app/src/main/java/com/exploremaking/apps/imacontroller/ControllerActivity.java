@@ -111,9 +111,8 @@ public class ControllerActivity extends Activity {
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                byte[] sent = new byte[1];
-
                 startActivity(homeActivity);
+                isActive = false;
                 BluetoothChooser.cancel();
                 finish();
             }
@@ -296,9 +295,11 @@ public class ControllerActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        final Intent bluetoothactivity = new Intent(this, BluetoothChooser.class);
-        startActivity(bluetoothactivity);
         BluetoothChooser.cancel();
+        final Intent bluetoothactivity = new Intent(this, BluetoothChooser.class);
+        bluetoothactivity.putExtra("Vehicle", getIntent().getExtras().getString("Vehicle"));
+        bluetoothactivity.putExtra("mode", "normal");
+        startActivity(bluetoothactivity);
         isActive = false;
         finish();
     }

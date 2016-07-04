@@ -165,13 +165,6 @@ public class BluetoothChooser extends Activity {
 
     }
 
-    @Override
-    protected void onPause() {
-        // TODO Auto-generated method stub
-        super.onPause();
-        unregisterReceiver(ActionFoundReceiver);
-        isListopen = false;
-    }
 
 
 
@@ -326,6 +319,14 @@ public class BluetoothChooser extends Activity {
         startActivity(mainActivity);
         finish();
     }
+
+    @Override
+    public void finish(){
+        unregisterReceiver(ActionFoundReceiver);
+        unregisterReceiver(DiscoveryReceiver);
+        super.finish();
+    }
+
 
 
 }
